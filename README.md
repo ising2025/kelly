@@ -1,4 +1,4 @@
-#Yale Battle Bots Website!!
+# Yale Battle Bots Website!!
 
 # React + Vite
 
