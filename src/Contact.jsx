@@ -79,10 +79,10 @@ export default function Contact() {
             email and we'll get back to you.
           </p>
           <a
-            href="mailto:REPLACE@REPLACE.com"
+            href="mailto:havenroboticsgroup@gmail.com"
             className="inline-block font-medium text-blue-600 hover:underline"
           >
-            REPLACE@REPLACE.com
+            havenroboticsgroup@gmail.com
           </a>
         </section>
 
