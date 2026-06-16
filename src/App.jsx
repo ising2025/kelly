@@ -1,24 +1,26 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import About from "./about";
-import Contact from "./contact";
-import Media from "./media";
-import Support from "./support";
-import Navbar from './navbar';
-import Home from './home';
+import About from "./About";
+import Contact from "./Contact";
+import Media from "./Media";
+import Support from "./Support";
+import Navbar from './Navbar';
+import Home from './Home';
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/media" element={<Media />} />
-        <Route path="/support" element={<Support />} />
-      </Routes>
+      {/* Add a wrapper with pt-24 (matching your navbar h-24) */}
+      <div className="pt-24"> 
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/support" element={<Support />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
