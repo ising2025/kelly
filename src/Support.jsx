@@ -849,7 +849,7 @@ export default function SupportPage() {
             lineHeight: 1.6,
           }}
         >
-          Donations support NHRL directly. This is not a
+          Donations support our team directly. This is not a
           tax-deductible charitable contribution. Perks are fulfilled by the
           team post-season.
         </p>

@@ -504,7 +504,7 @@ export default function HomePage() {
                 color: "#E1E1E1",
               }}
             >
-              NHRL — BattleBots 2025
+              Yale Battlebots
             </span>
             <div style={{ width: 40, height: 1, background: "#E93172" }} />
           </div>
@@ -856,7 +856,7 @@ export default function HomePage() {
             pointerEvents: "none",
           }}
         />
-        <p
+        {/* <p
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: "0.65rem",
@@ -867,7 +867,7 @@ export default function HomePage() {
           }}
         >
           NHRL
-        </p>
+        </p> */}
         <GlitchText
           text="ENTER THE ARENA"
           as="h2"

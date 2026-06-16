@@ -165,7 +165,7 @@ export default function Navbar() {
           >
             <div className="h-px w-12 bg-[#E93172]/40" />
             <span className="text-[10px] tracking-[0.4em] text-white/20 uppercase">
-              NHRL — BattleBots 2025
+              Yale Battlebots
             </span>
           </div>
         </nav>
