@@ -2,6 +2,18 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "@google/model-viewer";
 
+const teamMembers = [
+  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+];
+
 const competitions = [
   {
     date: "November 2025",
@@ -180,52 +192,96 @@ export default function About() {
         />
       </section>
 
-      {/* ── WHO ARE WE ──────────────────────────────────────────────────── */}
-      <section style={{
-        maxWidth: 1100, margin: "0 auto", padding: "4rem 4vw 6rem",
-        display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center",
-      }}>
-        <div>
-          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#E93172", display: "block", marginBottom: "1.25rem" }}>
-            The Team
-          </span>
-          <GlitchText
-            text="Who are We?"
-            as="h2"
-            style={{
-              fontFamily: "'Rajdhani', sans-serif",
-              fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
-              fontWeight: 700,
-              color: "#E1E1E1",
-              margin: "0 0 1.5rem",
-              lineHeight: 1.1,
-            }}
-          />
-          <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(225,225,225,0.55)", margin: 0 }}>
-            We're a group of Yale students building combat robots to compete in NHRL.
-            REPLACE WITH MORE INFORMATION. blah blah blah blah blah blah blah blah blah
-            blah blah blah blah blah blah blah blah blah blah blah blah
-          </p>
+      {/* ── WHO ARE WE + OUR MEMBERS ─────────────────────────────────────── */}
+      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "4rem 4vw 6rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center", marginBottom: "4rem" }}>
+          <div>
+            <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#E93172", display: "block", marginBottom: "1.25rem" }}>
+              The Team
+            </span>
+            <GlitchText
+              text="Who are We?"
+              as="h2"
+              style={{
+                fontFamily: "'Rajdhani', sans-serif",
+                fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+                fontWeight: 700,
+                color: "#E1E1E1",
+                margin: "0 0 1.5rem",
+                lineHeight: 1.1,
+              }}
+            />
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(225,225,225,0.55)", margin: 0 }}>
+              We're a group of Yale students building combat robots to compete in NHRL.
+              REPLACE WITH MORE INFORMATION. blah blah blah blah blah blah blah blah blah
+              blah blah blah blah blah blah blah blah blah blah blah blah
+            </p>
+          </div>
+
+          <div style={{ aspectRatio: "4/3", border: "1px solid rgba(233,49,114,0.2)", position: "relative", overflow: "hidden" }}>
+            {["top:0;left:0", "top:0;right:0", "bottom:0;left:0", "bottom:0;right:0"].map((pos, i) => (
+              <div key={i} style={{
+                position: "absolute",
+                ...(Object.fromEntries(pos.split(";").map((p) => p.split(":")))),
+                width: 20, height: 20,
+                borderTop: i < 2 ? "1px solid #E93172" : "none",
+                borderBottom: i >= 2 ? "1px solid #E93172" : "none",
+                borderLeft: i % 2 === 0 ? "1px solid #E93172" : "none",
+                borderRight: i % 2 === 1 ? "1px solid #E93172" : "none",
+              }} />
+            ))}
+            <img src="/team.jpg" alt="Our team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          </div>
         </div>
 
-        <div style={{
-          aspectRatio: "4/3",
-          border: "1px solid rgba(233,49,114,0.2)",
-          position: "relative",
-          overflow: "hidden",
-        }}>
-          {["top:0;left:0", "top:0;right:0", "bottom:0;left:0", "bottom:0;right:0"].map((pos, i) => (
-            <div key={i} style={{
-              position: "absolute",
-              ...(Object.fromEntries(pos.split(";").map((p) => p.split(":")))),
-              width: 20, height: 20,
-              borderTop: i < 2 ? "1px solid #E93172" : "none",
-              borderBottom: i >= 2 ? "1px solid #E93172" : "none",
-              borderLeft: i % 2 === 0 ? "1px solid #E93172" : "none",
-              borderRight: i % 2 === 1 ? "1px solid #E93172" : "none",
-            }} />
+        <GlitchText
+          text="Our Members"
+          as="h2"
+          style={{
+            fontFamily: "'Rajdhani', sans-serif",
+            fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+            fontWeight: 700,
+            color: "#E1E1E1",
+            margin: "0 0 2.5rem",
+            lineHeight: 1.1,
+          }}
+        />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2rem" }}>
+          {teamMembers.map((member, i) => (
+            <div key={i} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div style={{ aspectRatio: "1/1", border: "1px solid rgba(233,49,114,0.2)", position: "relative", overflow: "hidden", background: "rgba(15,17,8,0.8)" }}>
+                {["top:0;left:0", "top:0;right:0", "bottom:0;left:0", "bottom:0;right:0"].map((pos, j) => (
+                  <div key={j} style={{
+                    position: "absolute",
+                    ...(Object.fromEntries(pos.split(";").map((p) => p.split(":")))),
+                    width: 12, height: 12,
+                    borderTop: j < 2 ? "1px solid #E93172" : "none",
+                    borderBottom: j >= 2 ? "1px solid #E93172" : "none",
+                    borderLeft: j % 2 === 0 ? "1px solid #E93172" : "none",
+                    borderRight: j % 2 === 1 ? "1px solid #E93172" : "none",
+                  }} />
+                ))}
+                {member.photo ? (
+                  <img src={member.photo} alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                ) : (
+                  <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(225,225,225,0.15)", fontFamily: "'Rajdhani', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                    Photo
+                  </div>
+                )}
+              </div>
+              <div>
+                <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1.1rem", fontWeight: 600, color: "#E1E1E1", marginBottom: "0.2rem" }}>
+                  {member.name}
+                </div>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#E93172", marginBottom: "0.6rem" }}>
+                  {member.role}
+                </div>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "rgba(225,225,225,0.5)", margin: 0 }}>
+                  {member.bio}
+                </p>
+              </div>
+            </div>
           ))}
-          <img src="/team.jpg" alt="Our team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </div>
       </section>
 
