@@ -476,26 +476,26 @@ const TIERS = [
   {
     label: "Spark",
     amount: 10,
-    description: "Every dollar counts. You're part of the pit crew now.",
-    perks: ["Name in our credits", "Season update emails"],
+    // description: "Every dollar counts. You're part of the pit crew now.",
+    perks: ["Fill in all perks later; these are examples"],
   },
   {
     label: "Armor",
     amount: 50,
-    description: "Help us keep Lil Bro battle-ready between fights.",
+    // description: "Help us keep Lil Bro battle-ready between fights.",
     perks: ["Name in credits", "Exclusive backer Discord", "Behind-the-scenes updates"],
     featured: true,
   },
   {
     label: "Weapon",
     amount: 100,
-    description: "Fund the beater bar. You're the reason it hits harder.",
-    perks: ["Name on the bot (sticker)", "All Armor perks", "Signed team photo"],
+    // description: "Fund the beater bar. You're the reason it hits harder.",
+    perks: ["All Armor perks", "Name on the bot (sticker)", "Signed team photo"],
   },
   {
     label: "Overhaul",
     amount: 250,
-    description: "Season-level support. You're practically on the team.",
+    // description: "Season-level support. You're practically on the team.",
     perks: ["All Weapon perks", "Video shoutout", "Early season access"],
   },
 ];
@@ -596,7 +596,7 @@ export default function SupportPage() {
         >
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
           <span style={{ fontSize: "0.65rem", letterSpacing: "0.28em", textTransform: "uppercase" }}>
-            NHRL
+            Yale Battlebots
           </span>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
         </div>
@@ -634,8 +634,7 @@ export default function SupportPage() {
           }}
         >
           Lil Bro is built by a student team running on passion and
-          titanium. Every dollar you put in goes directly onto the machine —
-          and into the arena.
+          titanium. Every dollar you put in goes directly into the machine.
         </p>
 
         {/* Charge meter */}
