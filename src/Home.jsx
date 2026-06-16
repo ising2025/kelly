@@ -918,7 +918,7 @@ export default function HomePage() {
             textTransform: "uppercase",
           }}
         >
-          © 2025 NHRL
+          © 2025 Yale BattleBots
         </span>
       </footer>
     </div>

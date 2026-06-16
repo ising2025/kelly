@@ -1102,7 +1102,7 @@ export default function SupportPage() {
           Lil Bro
         </span>
         <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.2)", textTransform: "uppercase" }}>
-          © 2025 NHRL
+          © 2025 Yale BattleBots
         </span>
       </footer>
 
