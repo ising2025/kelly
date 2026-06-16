@@ -955,21 +955,18 @@ export default function SupportPage() {
           >
             {[
               {
-                icon: "⚡",
                 title: "Share the Page",
                 body: "The biggest thing you can do for free. Every share reaches a potential backer.",
                 action: "Copy Link",
                 onClick: handleCopy,
               },
               {
-                icon: "🔧",
                 title: "Sponsor the Team",
                 body: "Companies get logo placement on the bot and full sponsor recognition.",
                 action: "Sponsor Inquiry →",
                 onClick: () => window.location.href = "/contact",
               },
               {
-                icon: "📦",
                 title: "Donate Materials",
                 body: "We can use steel, titanium, carbon fiber, and electronics components.",
                 action: "Get in Touch →",
