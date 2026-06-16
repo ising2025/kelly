@@ -1,11 +1,193 @@
+import { useState, useEffect } from "react";
 
+// competitions must stay in sync with About.jsx — mediaAnchor here = id on each section
+const competitions = [
+  {
+    id: "november-2025",
+    date: "November 2025",
+    name: "Placeholder",
+    photos: [],
+    videos: [],
+  },
+  {
+    id: "january-2026",
+    date: "January 2026",
+    name: "Placeholder Event Name",
+    photos: [],
+    videos: [],
+  },
+  {
+    id: "march-2026",
+    date: "March 2026",
+    name: "Placeholder Event Name",
+    photos: [],
+    videos: [],
+  },
+];
+
+function FontLoader() {
+  return (
+    <style>{`
+      @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    `}</style>
+  );
+}
+
+function Scanlines() {
+  return (
+    <div style={{
+      position: "fixed", inset: 0, pointerEvents: "none", zIndex: 8,
+      background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px)",
+      animation: "scanMove 8s linear infinite",
+    }}>
+      <style>{`@keyframes scanMove { 0% { background-position: 0 0; } 100% { background-position: 0 100vh; } }`}</style>
+    </div>
+  );
+}
+
+function GlitchText({ text, as: Tag = "h1", style = {} }) {
+  const [glitching, setGlitching] = useState(false);
+  useEffect(() => {
+    const pulse = () => { setGlitching(true); setTimeout(() => setGlitching(false), 300); };
+    pulse();
+    const id = setInterval(pulse, 4000 + Math.random() * 3000);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <>
+      <style>{`
+        .glitch-wrap { position: relative; display: inline-block; }
+        .glitch-wrap::before, .glitch-wrap::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; }
+        .glitch-wrap.active::before { animation: glitch-clip1 0.3s steps(2) forwards; color: #E93172; clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); transform: translateX(-4px); opacity: 1; }
+        .glitch-wrap.active::after  { animation: glitch-clip2 0.3s steps(2) forwards; color: #B61A66; clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); transform: translateX(4px);  opacity: 1; }
+        @keyframes glitch-clip1 { 0% { transform: translateX(-4px); clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); } 50% { transform: translateX(4px); clip-path: polygon(0 55%, 100% 55%, 100% 70%, 0 70%); } 100% { transform: translateX(0); opacity: 0; } }
+        @keyframes glitch-clip2 { 0% { transform: translateX(4px); clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); } 50% { transform: translateX(-4px); clip-path: polygon(0 10%, 100% 10%, 100% 25%, 0 25%); } 100% { transform: translateX(0); opacity: 0; } }
+      `}</style>
+      <Tag className={`glitch-wrap${glitching ? " active" : ""}`} data-text={text} style={style}>{text}</Tag>
+    </>
+  );
+}
 
 export default function Media() {
   return (
-    <>
-      <main className="p-8">
-        <h1 className="text-3xl font-bold">Media Page</h1>
-      </main>
-    </>
+    <div style={{ background: "#0F1108", minHeight: "100vh", overflowX: "hidden", fontFamily: "'Inter', sans-serif", color: "#E1E1E1" }}>
+      <FontLoader />
+      <Scanlines />
+
+      {/* ── PAGE HEADER ─────────────────────────────────────────────────── */}
+      <section style={{ padding: "7rem 4vw 4rem", textAlign: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem", marginBottom: "1.5rem", opacity: 0.6 }}>
+          <div style={{ width: 40, height: 1, background: "#E93172" }} />
+          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#E1E1E1" }}>
+            Yale Battlebots... or whatever we want here
+          </span>
+          <div style={{ width: 40, height: 1, background: "#E93172" }} />
+        </div>
+        <GlitchText
+          text="Combat Log"
+          as="h1"
+          style={{
+            fontFamily: "'Rajdhani', sans-serif",
+            fontSize: "clamp(2.5rem, 8vw, 5rem)",
+            fontWeight: 700,
+            letterSpacing: "0.06em",
+            color: "#E1E1E1",
+            margin: 0,
+            textTransform: "uppercase",
+          }}
+        />
+        <p style={{ fontSize: "0.95rem", color: "rgba(225,225,225,0.45)", marginTop: "1.25rem", letterSpacing: "0.05em" }}>
+          Photos and videos from every competition.
+        </p>
+      </section>
+
+      {/* ── COMPETITION SECTIONS ─────────────────────────────────────────── */}
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 4vw 8rem" }}>
+        {competitions.map((comp, i) => (
+          <section
+            key={comp.id}
+            id={comp.id}
+            style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "4rem 0", background: i % 2 === 1 ? "rgba(233,49,114,0.02)" : "transparent" }}
+          >
+            {/* Section header */}
+            <div style={{ marginBottom: "2.5rem" }}>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#E93172", display: "block", marginBottom: "0.5rem" }}>
+                {comp.date}
+              </span>
+              <GlitchText
+                text={comp.name}
+                as="h2"
+                style={{
+                  fontFamily: "'Rajdhani', sans-serif",
+                  fontSize: "clamp(1.5rem, 3vw, 2.2rem)",
+                  fontWeight: 700,
+                  color: "#E1E1E1",
+                  margin: 0,
+                  lineHeight: 1.1,
+                }}
+              />
+            </div>
+
+            {/* Photos */}
+            <div style={{ marginBottom: "2rem" }}>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(225,225,225,0.35)", display: "block", marginBottom: "1rem" }}>
+                Photos
+              </span>
+              {comp.photos.length > 0 ? (
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)" }}>
+                  {comp.photos.map((src, j) => (
+                    <div key={j} style={{ aspectRatio: "4/3", overflow: "hidden" }}>
+                      <img src={src} alt={`${comp.name} photo ${j + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div style={{
+                  border: "1px dashed rgba(233,49,114,0.2)",
+                  padding: "3rem 2rem",
+                  textAlign: "center",
+                  color: "rgba(225,225,225,0.2)",
+                  fontFamily: "'Rajdhani', sans-serif",
+                  fontSize: "0.8rem",
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                }}>
+                  Photos coming soon
+                </div>
+              )}
+            </div>
+
+            {/* Videos */}
+            <div>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(225,225,225,0.35)", display: "block", marginBottom: "1rem" }}>
+                Videos
+              </span>
+              {comp.videos.length > 0 ? (
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "1rem" }}>
+                  {comp.videos.map((src, j) => (
+                    <div key={j} style={{ aspectRatio: "16/9", border: "1px solid rgba(233,49,114,0.2)", overflow: "hidden" }}>
+                      <iframe src={src} title={`${comp.name} video ${j + 1}`} allowFullScreen style={{ width: "100%", height: "100%", border: "none" }} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div style={{
+                  border: "1px dashed rgba(233,49,114,0.2)",
+                  padding: "3rem 2rem",
+                  textAlign: "center",
+                  color: "rgba(225,225,225,0.2)",
+                  fontFamily: "'Rajdhani', sans-serif",
+                  fontSize: "0.8rem",
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                }}>
+                  Videos coming soon
+                </div>
+              )}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
   );
 }
