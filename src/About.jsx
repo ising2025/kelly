@@ -193,7 +193,7 @@ export default function About() {
       </section>
 
       {/* ── WHO ARE WE + OUR MEMBERS ─────────────────────────────────────── */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "4rem 4vw 6rem" }}>
+      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "4rem 4vw 6rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center", marginBottom: "4rem" }}>
           <div>
             <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#E93172", display: "block", marginBottom: "1.25rem" }}>

@@ -771,7 +771,7 @@ export default function SupportPage() {
                 padding: "0.4rem 0.6rem",
                 border: "1px solid rgba(255,255,255,0.08)",
                 borderRight: "none",
-                lineHeight: 1,
+                lineHeight: 1.5,
               }}
             >
               $
