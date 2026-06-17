@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 // competitions must stay in sync with About.jsx — mediaAnchor here = id on each section
 const competitions = [
@@ -69,6 +70,16 @@ function GlitchText({ text, as: Tag = "h1", style = {} }) {
 }
 
 export default function Media() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const el = document.getElementById(hash.slice(1));
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 96;
+    window.scrollTo({ top, behavior: "smooth" });
+  }, [hash]);
+
   return (
     <div style={{ background: "#0F1108", minHeight: "100vh", overflowX: "hidden", fontFamily: "'Inter', sans-serif", color: "#E1E1E1" }}>
       <FontLoader />

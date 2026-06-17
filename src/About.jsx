@@ -19,19 +19,19 @@ const competitions = [
     date: "November 2025",
     name: "Placeholder",
     blurb: "Description",
-    mediaAnchor: "media-element-id",
+    mediaAnchor: "november-2025",
   },
   {
     date: "January 2026",
     name: "Placeholder Event Name",
     blurb: "Description",
-    mediaAnchor: "media-element-id",
+    mediaAnchor: "january-2026",
   },
   {
     date: "March 2026",
     name: "Placeholder Event Name",
     blurb: "Description",
-    mediaAnchor: "media-element-id",
+    mediaAnchor: "march-2026",
   },
 ];
 
@@ -53,90 +53,6 @@ function Scanlines() {
       <style>{`@keyframes scanMove { 0% { background-position: 0 0; } 100% { background-position: 0 100vh; } }`}</style>
     </div>
   );
-}
-
-function SparkCanvas() {
-  const canvasRef = useRef(null);
-  const sparksRef = useRef([]);
-  const rafRef = useRef(null);
-
-  const createSpark = useCallback((x, y, burst = false) => {
-    const count = burst ? 28 : 2;
-    const biasDeg = burst ? -(Math.PI / 2) + (Math.random() - 0.5) * 0.8 : Math.random() * Math.PI * 2;
-    for (let i = 0; i < count; i++) {
-      const spread = burst ? (Math.random() - 0.5) * 2.4 : (Math.random() - 0.5) * Math.PI * 2;
-      const angle = burst ? biasDeg + spread : spread;
-      const speed = burst ? 5 + Math.random() * 11 : 3 + Math.random() * 6;
-      const r = Math.random();
-      const color = r > 0.75 ? "#E93172" : r > 0.45 ? "#fff" : "#ffd080";
-      sparksRef.current.push({
-        x, y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        life: 1,
-        decay: 0.055 + Math.random() * 0.09,
-        size: 0.5 + Math.random() * 0.9,
-        color, trail: [],
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    let lastBurst = 0;
-
-    const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const onMouseMove = (e) => {
-      const now = Date.now();
-      if (now - lastBurst > 120) { createSpark(e.clientX, e.clientY); lastBurst = now; }
-    };
-    const onClick = (e) => createSpark(e.clientX, e.clientY, true);
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("click", onClick);
-
-    const ambientInterval = setInterval(() => {
-      createSpark(Math.random() * canvas.width, canvas.height * 0.5 + Math.random() * canvas.height * 0.4, Math.random() > 0.6);
-    }, 250);
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      sparksRef.current = sparksRef.current.filter((s) => s.life > 0);
-      sparksRef.current.forEach((s) => {
-        s.trail.push({ x: s.x, y: s.y });
-        if (s.trail.length > 3) s.trail.shift();
-        if (s.trail.length >= 2) {
-          const tail = s.trail[0];
-          const head = s.trail[s.trail.length - 1];
-          ctx.beginPath(); ctx.moveTo(tail.x, tail.y); ctx.lineTo(head.x, head.y);
-          const alpha = s.life;
-          if (s.color === "#E93172") { ctx.strokeStyle = `rgba(233,49,114,${alpha})`; ctx.shadowColor = "#E93172"; }
-          else if (s.color === "#ffd080") { ctx.strokeStyle = `rgba(255,208,128,${alpha * 0.9})`; ctx.shadowColor = "#ffcc66"; }
-          else { ctx.strokeStyle = `rgba(255,255,255,${alpha})`; ctx.shadowColor = "#ffffff"; }
-          ctx.lineWidth = s.size; ctx.lineCap = "round"; ctx.shadowBlur = 4; ctx.stroke(); ctx.shadowBlur = 0;
-          ctx.beginPath(); ctx.arc(s.x, s.y, s.size * 0.7, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,255,255,${alpha * 0.9})`; ctx.shadowColor = s.color === "#E93172" ? "#E93172" : "#fff";
-          ctx.shadowBlur = 5; ctx.fill(); ctx.shadowBlur = 0;
-        }
-        s.x += s.vx; s.y += s.vy; s.vy += 0.35; s.vx *= 0.97; s.life -= s.decay;
-      });
-      rafRef.current = requestAnimationFrame(draw);
-    };
-    draw();
-
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      clearInterval(ambientInterval);
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("click", onClick);
-    };
-  }, [createSpark]);
-
-  return <canvas ref={canvasRef} style={{ position: "fixed", top: 0, left: 0, pointerEvents: "none", zIndex: 10 }} />;
 }
 
 function GlitchText({ text, as: Tag = "h1", style = {} }) {
