@@ -504,7 +504,7 @@ export default function HomePage() {
                 color: "#E1E1E1",
               }}
             >
-              Yale Battlebots
+              WWSD
             </span>
             <div style={{ width: 40, height: 1, background: "#E93172" }} />
           </div>
@@ -918,7 +918,7 @@ export default function HomePage() {
             textTransform: "uppercase",
           }}
         >
-          © 2025 Yale BattleBots
+          © 2025 WWSD
         </span>
       </footer>
     </div>

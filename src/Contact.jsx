@@ -55,7 +55,7 @@ export default function Contact() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem", marginBottom: "1.5rem", opacity: 0.6 }}>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#E1E1E1" }}>
-            Yale Battlebots
+            WWSD
           </span>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
         </div>
@@ -85,14 +85,24 @@ export default function Contact() {
           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#E93172", display: "block", marginBottom: "1rem" }}>
             Social Media
           </span>
-          <a
-            href="https://instagram.com/OUR_HANDLE"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "1px solid rgba(225,225,225,0.3)", borderRadius: 0, color: "#E1E1E1", textDecoration: "none", display: "inline-block" }}
-          >
-            Instagram
-          </a>
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <a
+              href="https://instagram.com/OUR_HANDLE"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "1px solid rgba(225,225,225,0.3)", borderRadius: 0, color: "#E1E1E1", textDecoration: "none", display: "inline-block" }}
+            >
+              Instagram
+            </a>
+            <a
+              href="https://youtube.com/@OUR_HANDLE"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "1px solid rgba(225,225,225,0.3)", borderRadius: 0, color: "#E1E1E1", textDecoration: "none", display: "inline-block" }}
+            >
+              YouTube
+            </a>
+          </div>
         </section>
 
         {/* Other Questions */}

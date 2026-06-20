@@ -90,7 +90,7 @@ export default function Media() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem", marginBottom: "1.5rem", opacity: 0.6 }}>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#E1E1E1" }}>
-            Yale Battlebots
+            WWSD
           </span>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
         </div>

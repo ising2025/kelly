@@ -39,10 +39,10 @@ export default function Navbar() {
         <Link to="/" className="group relative z-50">
           <div className="flex flex-col">
             <span className="text-[10px] tracking-[0.6em] text-[#E93172]">
-              YALE
+              NHRL
             </span>
             <span className="text-3xl font-black tracking-[0.2em] text-white transition duration-300 group-hover:text-[#E93172]">
-              UNDERCOVER
+              WWSD
             </span>
           </div>
           <div className="absolute -inset-4 -z-10 rounded-full bg-[#E93172]/0 blur-2xl transition duration-500 group-hover:bg-[#E93172]/20" />
@@ -165,7 +165,7 @@ export default function Navbar() {
           >
             <div className="h-px w-12 bg-[#E93172]/40" />
             <span className="text-[10px] tracking-[0.4em] text-white/20 uppercase">
-              Yale Battlebots
+              WWSD
             </span>
           </div>
         </nav>
