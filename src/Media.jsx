@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 // competitions must stay in sync with About.jsx — mediaAnchor here = id on each section
@@ -199,6 +199,41 @@ export default function Media() {
           </section>
         ))}
       </div>
+      {/* ── FOOTER ───────────────────────────────────────────────────────── */}
+      <footer
+        style={{
+          borderTop: "1px solid rgba(255,255,255,0.06)",
+          padding: "2rem 4vw",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "1rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'Rajdhani', sans-serif",
+            fontSize: "1rem",
+            fontWeight: 700,
+            letterSpacing: "0.15em",
+            color: "#E93172",
+          }}
+        >
+          Lil Bro
+        </span>
+        <span
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.65rem",
+            letterSpacing: "0.12em",
+            color: "rgba(225,225,225,0.25)",
+            textTransform: "uppercase",
+          }}
+        >
+          © WWSD
+        </span>
+      </footer>
     </div>
   );
 }

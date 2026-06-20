@@ -13,11 +13,6 @@ export default function Navbar() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Close menu on route change
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
-
   // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -36,7 +31,7 @@ export default function Navbar() {
       <div className="relative mx-auto flex h-24 max-w-7xl items-center justify-between px-8">
 
         {/* Logo */}
-        <Link to="/" className="group relative z-50">
+        <Link to="/" onClick={() => setMenuOpen(false)} className="group relative z-50">
           <div className="flex flex-col">
             <span className="text-[10px] tracking-[0.6em] text-[#E93172]">
               NHRL
@@ -56,6 +51,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 to={item.path}
+                onClick={() => setMenuOpen(false)}
                 className={`group relative py-2 text-sm uppercase tracking-[0.3em] transition duration-300 ${
                   isActive ? "text-white" : "text-white/50 hover:text-white"
                 }`}
@@ -132,6 +128,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 to={item.path}
+                onClick={() => setMenuOpen(false)}
                 style={{
                   transitionDelay: menuOpen ? `${i * 60 + 80}ms` : "0ms",
                   transform: menuOpen ? "translateY(0)" : "translateY(20px)",

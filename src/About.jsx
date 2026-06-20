@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "@google/model-viewer";
 
@@ -202,7 +202,7 @@ export default function About() {
       </section>
 
       {/* ── COMPETITION HISTORY ──────────────────────────────────────────── */}
-      <section style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "6rem 4vw", background: "rgba(233,49,114,0.03)" }}>
+      <section id="competition-history" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "6rem 4vw", background: "rgba(233,49,114,0.03)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#E93172", display: "block", marginBottom: "3rem", textAlign: "center" }}>
             Competition History
@@ -231,7 +231,7 @@ export default function About() {
       </section>
 
       {/* ── OUR ROBOT ───────────────────────────────────────────────────── */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "6rem 4vw 8rem" }}>
+      <section id="our-robot" style={{ maxWidth: 1100, margin: "0 auto", padding: "6rem 4vw 8rem" }}>
         <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#E93172", display: "block", marginBottom: "1.25rem", textAlign: "center" }}>
           Our Robot
         </span>
@@ -274,6 +274,41 @@ export default function About() {
           />
         </div>
       </section>
+      {/* ── FOOTER ───────────────────────────────────────────────────────── */}
+      <footer
+        style={{
+          borderTop: "1px solid rgba(255,255,255,0.06)",
+          padding: "2rem 4vw",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "1rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'Rajdhani', sans-serif",
+            fontSize: "1rem",
+            fontWeight: 700,
+            letterSpacing: "0.15em",
+            color: "#E93172",
+          }}
+        >
+          Lil Bro
+        </span>
+        <span
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.65rem",
+            letterSpacing: "0.12em",
+            color: "rgba(225,225,225,0.25)",
+            textTransform: "uppercase",
+          }}
+        >
+          © WWSD
+        </span>
+      </footer>
     </div>
   );
 }

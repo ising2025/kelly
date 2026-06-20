@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 // ── Google Fonts ──────────────────────────────────────────────────────────────
@@ -376,6 +376,223 @@ function ArenaButton({ children, primary = false, onClick }) {
   );
 }
 
+// ── Pink Fire ─────────────────────────────────────────────────────────────────
+function PinkFire() {
+  const firebeds = useMemo(
+    () =>
+      Array.from({ length: 24 }, (_, i) => ({
+        left: `${i * 4.6 - 10}%`,
+        width: 220 + (i % 4) * 28,
+        height: 184 + (i % 5) * 16,
+        delay: `${i * -0.11}s`,
+        frontDuration: `${0.82 + (i % 4) * 0.05}s`,
+        backDuration: `${1.28 + (i % 5) * 0.06}s`,
+        opacity: 0.72 + (i % 4) * 0.07,
+      })),
+    []
+  );
+
+  const sparks = useMemo(
+    () =>
+      Array.from({ length: 34 }, (_, i) => ({
+        left: `${3 + ((i * 17) % 94)}%`,
+        bottom: `${26 + (i % 5) * 6}px`,
+        drift: `${((i * 29) % 70) - 35}px`,
+        delay: `${(i % 12) * -0.18}s`,
+        duration: `${1.05 + (i % 6) * 0.18}s`,
+        size: `${2 + (i % 3)}px`,
+      })),
+    []
+  );
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: 250,
+        pointerEvents: "none",
+        overflow: "hidden",
+        zIndex: 0,
+      }}
+    >
+      <style>{`
+        @keyframes arenaBurn {
+          0%, 100% {
+            clip-path: polygon(48% 97%, 42% 97%, 37% 93%, 31% 92%, 28% 88%, 26% 81%, 29% 84%, 34% 84%, 33% 79%, 30% 74%, 31% 67%, 34% 57%, 34% 65%, 39% 71%, 43% 65%, 43% 55%, 40% 45%, 48% 59%, 49% 69%, 51% 76%, 55% 71%, 54% 65%, 54% 58%, 58% 64%, 61% 72%, 57% 92%, 61% 97%, 64% 98%, 66% 95%, 64% 93%, 57% 96%, 54% 93%, 48% 97%);
+          }
+          25% {
+            clip-path: polygon(49% 97%, 41% 97%, 35% 92%, 33% 86%, 34% 80%, 30% 74%, 34% 77%, 38% 81%, 38% 78%, 36% 72%, 35% 67%, 37% 61%, 37% 54%, 39% 61%, 39% 67%, 43% 63%, 43% 58%, 45% 44%, 44% 58%, 48% 66%, 51% 67%, 51% 59%, 54% 67%, 56% 72%, 57% 79%, 59% 77%, 60% 71%, 61% 77%, 61% 83%, 60% 89%, 61% 94%, 57% 97%, 52% 98%);
+          }
+          50% {
+            clip-path: polygon(46% 97%, 39% 96%, 35% 89%, 36% 84%, 34% 77%, 30% 73%, 30% 65%, 30% 70%, 35% 75%, 38% 68%, 37% 61%, 40% 53%, 41% 42%, 42% 56%, 44% 65%, 50% 67%, 51% 57%, 53% 68%, 52% 74%, 51% 81%, 55% 78%, 57% 72%, 58% 79%, 57% 85%, 55% 88%, 60% 87%, 63% 82%, 63% 89%, 59% 94%, 55% 98%, 51% 92%, 50% 99%, 45% 96%);
+          }
+          75% {
+            clip-path: polygon(45% 97%, 38% 97%, 33% 93%, 31% 87%, 31% 81%, 29% 76%, 25% 69%, 29% 61%, 30% 69%, 35% 71%, 35% 62%, 34% 54%, 38% 45%, 38% 54%, 43% 62%, 47% 57%, 48% 49%, 44% 38%, 50% 46%, 53% 60%, 54% 71%, 53% 79%, 59% 76%, 60% 66%, 64% 73%, 63% 79%, 59% 85%, 64% 90%, 68% 84%, 68% 92%, 60% 97%, 53% 98%, 48% 99%);
+          }
+        }
+        @keyframes arenaBurnTall {
+          0%, 100% {
+            clip-path: polygon(48% 99%, 39% 99%, 29% 96%, 22% 90%, 18% 79%, 20% 66%, 16% 58%, 22% 42%, 28% 48%, 33% 44%, 30% 29%, 37% 12%, 43% 31%, 49% 35%, 53% 22%, 59% 39%, 56% 52%, 65% 50%, 71% 39%, 75% 56%, 71% 68%, 80% 69%, 75% 83%, 66% 94%, 56% 98%);
+          }
+          20% {
+            clip-path: polygon(45% 100%, 34% 99%, 24% 95%, 17% 86%, 18% 73%, 14% 62%, 20% 51%, 19% 39%, 28% 50%, 34% 47%, 32% 34%, 38% 18%, 42% 34%, 50% 37%, 48% 24%, 58% 32%, 62% 49%, 69% 44%, 73% 53%, 70% 65%, 83% 71%, 77% 85%, 68% 96%, 55% 99%);
+          }
+          45% {
+            clip-path: polygon(50% 99%, 38% 99%, 27% 96%, 20% 89%, 16% 76%, 19% 64%, 13% 55%, 23% 47%, 25% 35%, 33% 48%, 39% 42%, 36% 25%, 45% 8%, 47% 30%, 54% 39%, 58% 26%, 65% 43%, 62% 56%, 72% 54%, 76% 64%, 71% 75%, 80% 82%, 72% 94%, 60% 99%);
+          }
+          70% {
+            clip-path: polygon(46% 100%, 35% 99%, 25% 95%, 19% 87%, 22% 76%, 17% 68%, 18% 57%, 21% 46%, 30% 53%, 35% 45%, 34% 32%, 41% 16%, 43% 34%, 51% 39%, 54% 28%, 60% 43%, 59% 56%, 67% 51%, 76% 58%, 73% 70%, 82% 76%, 75% 90%, 65% 97%, 54% 99%);
+          }
+        }
+        @keyframes arenaGlowPulse {
+          0%, 100% { opacity: 0.55; transform: translateX(-50%) scale(1, 1); }
+          50% { opacity: 0.9; transform: translateX(-50%) scale(1.06, 1.16); }
+        }
+        @keyframes arenaSparkRise {
+          0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+          10%  { opacity: 1; }
+          70%  { opacity: 0.65; }
+          100% { transform: translateY(-145px) translateX(var(--drift)) scale(0.25); opacity: 0; }
+        }
+        @keyframes arenaHeatShimmer {
+          0%, 100% { opacity: 0.25; transform: skewX(-1deg); }
+          50% { opacity: 0.5; transform: skewX(1deg); }
+        }
+      `}</style>
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: -54,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "124%",
+          height: 190,
+          background:
+            "radial-gradient(ellipse 55% 100% at 50% 100%, rgba(255,240,246,0.72) 0%, rgba(255,143,192,0.6) 22%, rgba(233,49,114,0.44) 46%, rgba(182,26,102,0.2) 66%, transparent 82%)",
+          filter: "blur(28px)",
+          animation: "arenaGlowPulse 1.15s ease-in-out infinite",
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "118%",
+          height: 250,
+          borderRadius: "50% 50% 20% 20%",
+          background:
+            "radial-gradient(ellipse 50% 70% at 50% 100%, rgba(233,49,114,0.35) 0%, rgba(233,49,114,0.16) 42%, transparent 72%)",
+          filter: "blur(42px)",
+          opacity: 0.8,
+          animation: "arenaGlowPulse 1.6s ease-in-out -0.35s infinite",
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: 94,
+          left: 0,
+          right: 0,
+          height: 95,
+          background:
+            "linear-gradient(to top, rgba(233,49,114,0.2), rgba(255,143,192,0.08), transparent)",
+          filter: "blur(16px)",
+          animation: "arenaHeatShimmer 0.8s ease-in-out infinite",
+        }}
+      />
+
+      {firebeds.map((fire, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            bottom: -22,
+            left: fire.left,
+            width: fire.width,
+            height: fire.height,
+            opacity: fire.opacity,
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              bottom: 3,
+              width: "82%",
+              height: "100%",
+              background:
+                "linear-gradient(0deg, rgba(182,26,102,1) 8%, rgba(233,49,114,0.98) 42%, rgba(255,111,176,0.9) 69%, rgba(255,232,242,0.8) 100%)",
+              animation: `arenaBurnTall ${fire.backDuration} linear ${fire.delay} infinite`,
+              filter: "blur(1.25px)",
+              mixBlendMode: "screen",
+              transformOrigin: "bottom center",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              bottom: -8,
+              width: "138%",
+              height: "78%",
+              background:
+                "linear-gradient(0deg, rgba(138,20,80,1) 10%, rgba(233,49,114,0.95) 48%, rgba(255,158,200,0.86) 78%, rgba(255,240,246,0.74) 100%)",
+              animation: `arenaBurn ${fire.frontDuration} linear ${fire.delay} infinite`,
+              filter: "blur(1px)",
+              mixBlendMode: "screen",
+              transformOrigin: "bottom center",
+            }}
+          />
+        </div>
+      ))}
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: -20,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "94%",
+          height: 62,
+          background:
+            "radial-gradient(ellipse 60% 100% at 50% 100%, rgba(255,240,246,0.9) 0%, rgba(255,143,192,0.58) 38%, rgba(233,49,114,0.32) 60%, transparent 82%)",
+          filter: "blur(6px)",
+          mixBlendMode: "screen",
+          animation: "arenaHeatShimmer 0.42s ease-in-out infinite",
+        }}
+      />
+
+      {sparks.map((spark, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            bottom: spark.bottom,
+            left: spark.left,
+            width: spark.size,
+            height: spark.size,
+            borderRadius: 1,
+            background: i % 4 === 0 ? "#fff0f6" : "#ff8fc0",
+            boxShadow: "0 0 7px 1px rgba(233,49,114,0.95)",
+            filter: "blur(0.5px)",
+            "--drift": spark.drift,
+            animation: `arenaSparkRise ${spark.duration} ease-out ${spark.delay} infinite`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 // ── Main HomePage ─────────────────────────────────────────────────────────────
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -701,7 +918,7 @@ export default function HomePage() {
           >
             more stuff blah blah.
           </p>
-          <ArenaButton primary onClick={() => navigate("/about")}>Bot Specs</ArenaButton>
+          <ArenaButton primary onClick={() => navigate("/about#our-robot")}>Bot Diagram</ArenaButton>
         </div>
 
         {/* Right: bot image placeholder */}
@@ -878,12 +1095,25 @@ export default function HomePage() {
             color: "#E1E1E1",
             margin: "0 0 2rem",
             letterSpacing: "0.08em",
+            position: "relative",
+            zIndex: 1,
           }}
         />
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <ArenaButton primary onClick={() => navigate("/about")}>Follow the Season</ArenaButton>
+        <div
+          style={{
+            display: "flex",
+            gap: "1rem",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          <ArenaButton primary onClick={() => navigate("/about#competition-history")}>Follow the Season</ArenaButton>
           <ArenaButton onClick={() => navigate("/contact")}>Contact the Team</ArenaButton>
         </div>
+
+        <PinkFire />
       </section>
 
       {/* ── FOOTER ───────────────────────────────────────────────────────── */}

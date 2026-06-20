@@ -474,29 +474,28 @@ function Toast({ message, visible }) {
 // ── Main ──────────────────────────────────────────────────────────────────────
 const TIERS = [
   {
-    label: "Spark",
-    amount: 10,
-    // description: "Every dollar counts. You're part of the pit crew now.",
-    perks: ["Fill in all perks later; these are examples"],
-  },
-  {
-    label: "Armor",
+    label: "Bronze",
     amount: 50,
-    // description: "Help us keep Lil Bro battle-ready between fights.",
-    perks: ["Name in credits", "Exclusive backer Discord", "Behind-the-scenes updates"],
-    featured: true,
+    // description: "Every dollar counts. You're part of the pit crew now.",
+    perks: ["Name on website", "Tagged in social media posts"],
   },
   {
-    label: "Weapon",
+    label: "Silver",
     amount: 100,
-    // description: "Fund the beater bar. You're the reason it hits harder.",
-    perks: ["All Armor perks", "Name on the bot (sticker)", "Signed team photo"],
+    // description: "Help us keep Lil Bro battle-ready between fights.",
+    perks: ["All Bronze perks", "Logo on robot (Small)", "Dedicated social media post"],
   },
   {
-    label: "Overhaul",
+    label: "Gold",
     amount: 250,
+    // description: "Fund the beater bar. You're the reason it hits harder.",
+    perks: ["All Silver perks", "Logo on robot (Medium)", "Signed team photo"],
+  },
+  {
+    label: "Iridium",
+    amount: 500,
     // description: "Season-level support. You're practically on the team.",
-    perks: ["All Weapon perks", "Video shoutout", "Early season access"],
+    perks: ["All Gold perks", "Logo on robot (Large)", "Shoutout in robot reveal videos"],
   },
 ];
 
@@ -533,7 +532,7 @@ export default function SupportPage() {
     }
     // Replace with your real payment link / Stripe / PayPal
     window.open(
-      `https://buy.stripe.com/YOUR_LINK?amount=${finalAmount * 100}`,
+      `mailto:havenroboticsgroup@gmail.com`,
       "_blank"
     );
     showToast(`Redirecting — thank you for $${finalAmount}!`);
@@ -834,7 +833,7 @@ export default function SupportPage() {
               letterSpacing: "0.05em",
             }}
           >
-            Secure checkout via Stripe
+            Contact us for a donation!
           </span>
         </div>
 
@@ -1098,7 +1097,7 @@ export default function SupportPage() {
           Lil Bro
         </span>
         <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.2)", textTransform: "uppercase" }}>
-          © 2025 WWSD
+          © WWSD
         </span>
       </footer>
 
