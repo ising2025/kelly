@@ -146,7 +146,7 @@ export default function About() {
                 borderRight: i % 2 === 1 ? "1px solid #E93172" : "none",
               }} />
             ))}
-            <img src="/team.jpg" alt="Our team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src="../assets/team.jpg" alt="Our team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
         </div>
 
