@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "@google/model-viewer";
+import team from './assets/team.jpg';
 
 const teamMembers = [
   { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
@@ -146,7 +147,7 @@ export default function About() {
                 borderRight: i % 2 === 1 ? "1px solid #E93172" : "none",
               }} />
             ))}
-            <img src="../assets/team.jpg" alt="Our team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src={ team } alt="Our team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
         </div>
 
