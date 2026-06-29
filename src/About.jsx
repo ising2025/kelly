@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "@google/model-viewer";
 import team from './assets/team.jpg';
-import robot from './assets/robot.gltf';
 
 const teamMembers = [
   { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
@@ -268,7 +267,7 @@ export default function About() {
             }} />
           ))}
           <model-viewer
-            src= { robot }
+            src= {`${import.meta.env.BASE_URL}robot.gltf`}
             alt="Interactive 3D model of our robot"
             camera-controls
             poster="/robot-poster.png"
