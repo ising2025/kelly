@@ -31,7 +31,7 @@ function ScrollManager() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/kelly">
       <ScrollManager />
       <Navbar />
       {/* Add a wrapper with pt-24 (matching your navbar h-24) */}
