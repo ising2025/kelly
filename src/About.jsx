@@ -7,7 +7,7 @@ import ishaniPhoto from './assets/ishani.png';
 import kellyPhoto from './assets/kelly.jpg';
 import willPhoto from './assets/will.jpeg';
 import seanPhoto from './assets/sean.jpeg';
-import sebastianPhoto from './assets/sebastian.jpeg';
+import sebastianPhoto from './assets/sebastian.JPEG';
 import nickPhoto from './assets/nick.jpeg';
 
 const teamMembers = [

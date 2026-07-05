@@ -608,10 +608,10 @@ export default function HomePage() {
 
   const stats = [
     { label: "Bot Weight",      value: 3,   unit: " lbs" },
-    { label: "Top Speed",       value: 17.4,  unit: " m/s" },
-    { label: "Weapon RPM",      value: 4800,  unit: "" },
+    { label: "Top Speed",       value: 4.77,  unit: " m/s" },
+    { label: "Weapon RPM",      value: 24464,  unit: "" },
     { label: "Arena Victories", value: 0,    unit: "" },
-    { label: "Hit Force",       value: 3200,  unit: " N" },
+    { label: "Kinetic Energy",       value: 977,  unit: " J" },
   ];
 
   return (
@@ -997,10 +997,10 @@ export default function HomePage() {
             }}
           >
             {[
-              { match: "Season 8 — Ep. 4", opponent: "Shredmaster", result: "WIN", method: "KO — 0:47" },
-              { match: "Season 8 — Ep. 7", opponent: "Voltage Drop", result: "WIN", method: "JD" },
-              { match: "Season 8 — Quarterfinal", opponent: "Apex", result: "LOSS", method: "KO — 2:12" },
-              { match: "Season 9 — Ep. 2", opponent: "Gridlock", result: "WIN", method: "KO — 1:03" },
+              { match: "OCT 2026 — Match 1", opponent: "TBD", result: "WIN", method: "TBD" },
+              // { match: "Season 8 — Ep. 7", opponent: "Voltage Drop", result: "WIN", method: "JD" },
+              // { match: "Season 8 — Quarterfinal", opponent: "Apex", result: "LOSS", method: "KO — 2:12" },
+              // { match: "Season 9 — Ep. 2", opponent: "Gridlock", result: "WIN", method: "KO — 1:03" },
             ].map((fight, i) => (
               <div
                 key={i}
