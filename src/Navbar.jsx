@@ -34,7 +34,7 @@ export default function Navbar() {
         <Link to="/" onClick={() => setMenuOpen(false)} className="group relative z-50">
           <div className="flex flex-col">
             <span className="text-[10px] tracking-[0.6em] text-[#E93172]">
-              NHRL
+              TEAM
             </span>
             <span className="text-3xl font-black tracking-[0.2em] text-white transition duration-300 group-hover:text-[#E93172]">
               WWSD

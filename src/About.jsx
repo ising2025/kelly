@@ -3,37 +3,44 @@ import { Link } from "react-router-dom";
 import "@google/model-viewer";
 import team from './assets/team.jpg';
 
+import ishaniPhoto from './assets/ishani.png';
+import kellyPhoto from './assets/kelly.jpg';
+import willPhoto from './assets/will.jpeg';
+import seanPhoto from './assets/sean.jpeg';
+import sebastianPhoto from './assets/sebastian.jpeg';
+import nickPhoto from './assets/nick.jpeg';
+
 const teamMembers = [
-  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
-  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
-  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
-  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
-  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
-  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
-  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
-  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
-  { name: "Member Name", role: "Role / Specialty", photo: null, bio: "Short bio or description goes here." },
+  { name: "Henri", photo: null, bio: "I’m an alum of VEX Team 3723 and I’m looking forward to seeing what WWSD has in store for us! I’m a mechE major and an aviation enthusiast, also involved in Yale Jet Aeronautics." },
+  { name: "Ishani", photo: ishaniPhoto, bio: "I’m a CS + linguistics major, and I loved being a part of robotics when I was younger. Super excited for what WWSD has in store!" },
+  { name: "Sebastian", photo: sebastianPhoto, photoPosition: "center 20%", bio: "I’m a MechE major, and I’ve been excited about robotics ever since my time on FRC Team 9038. I spent high school telling people FRC wasn’t BattleBots, but then I started watching NHRL in 2024, and now here we are!" },
+  { name: "Kelly", photo: kellyPhoto, photoPosition: "center 35%", bio: "I’m an alum of FRC Team 3504 GoS, excited to be on WWSD! I’m interested in pure math + CS + robotics and a big fan of tomato and egg noodles." },
+  { name: "Kingsten", photo: null, bio: "I’m an applied math major who watched way too much BattleBots. I also captained FTC Team 10237 previously." },
+  { name: "Nick", photo: nickPhoto, bio: "I’m an EE major who is interested in aerospace and robotics! Previously I led FRC Team 7407 and I’m involved in rocketry (my hobby) and FSAE." },
+  { name: "Sean", photo: seanPhoto, bio: "I’m a CS major new to robotics. I have interests in AI, and I’m excited to see how WWSD brings them together!" },
+  { name: "Will", photo: willPhoto, bio: "I’m a MechE major interested in aerospace! I have experience in mid-powered rocketry and am currently project lead for Yale Jet Aeronautics. I am also a volunteer firefighter!" },
+  { name: "Caeli", photo: null, bio: "" },
 ];
 
 const competitions = [
   {
-    date: "November 2025",
-    name: "Placeholder",
-    blurb: "Description",
-    mediaAnchor: "november-2025",
+    date: "October 2026",
+    name: "October 2026 NHRL Open",
+    blurb: "Lil Bro's Debut Event",
+    mediaAnchor: "october-2026",
   },
-  {
-    date: "January 2026",
-    name: "Placeholder Event Name",
-    blurb: "Description",
-    mediaAnchor: "january-2026",
-  },
-  {
-    date: "March 2026",
-    name: "Placeholder Event Name",
-    blurb: "Description",
-    mediaAnchor: "march-2026",
-  },
+  // { //placeholder examples
+  //   date: "January 2026",
+  //   name: "Placeholder Event Name",
+  //   blurb: "Description",
+  //   mediaAnchor: "january-2026",
+  // },
+  // {
+  //   date: "March 2026",
+  //   name: "Placeholder Event Name",
+  //   blurb: "Description",
+  //   mediaAnchor: "march-2026",
+  // },
 ];
 
 function FontLoader() {
@@ -130,8 +137,7 @@ export default function About() {
             />
             <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(225,225,225,0.55)", margin: 0 }}>
               We're a group of Yale students building combat robots to compete in NHRL.
-              REPLACE WITH MORE INFORMATION. blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah
+              Many of us come from robotics backgrounds, with prior experience in FRC, FTC, and VEX.
             </p>
           </div>
 
@@ -179,7 +185,7 @@ export default function About() {
                   }} />
                 ))}
                 {member.photo ? (
-                  <img src={member.photo} alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  <img src={member.photo} alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: member.photoPosition || "center", display: "block" }} />
                 ) : (
                   <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(225,225,225,0.15)", fontFamily: "'Rajdhani', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>
                     Photo
@@ -187,11 +193,8 @@ export default function About() {
                 )}
               </div>
               <div>
-                <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1.1rem", fontWeight: 600, color: "#E1E1E1", marginBottom: "0.2rem" }}>
+                <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1.1rem", fontWeight: 600, color: "#E1E1E1", marginBottom: "0.6rem" }}>
                   {member.name}
-                </div>
-                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#E93172", marginBottom: "0.6rem" }}>
-                  {member.role}
                 </div>
                 <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "rgba(225,225,225,0.5)", margin: 0 }}>
                   {member.bio}
@@ -267,7 +270,7 @@ export default function About() {
             }} />
           ))}
           <model-viewer
-            src= {`${import.meta.env.BASE_URL}robot.gltf`}
+            src= {`${import.meta.env.BASE_URL}robot.glb`} //use npx @gltf-transform/cli optimize public/robot.gltf public/robot.glb --compress draco to convert gltf to glb
             alt="Interactive 3D model of our robot"
             camera-controls
             poster="/robot-poster.png"

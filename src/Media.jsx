@@ -4,26 +4,26 @@ import { useLocation } from "react-router-dom";
 // competitions must stay in sync with About.jsx — mediaAnchor here = id on each section
 const competitions = [
   {
-    id: "november-2025",
-    date: "November 2025",
-    name: "Placeholder",
+    id: "october-2026",
+    date: "October 2026",
+    name: "October 2026 NHRL Open",
     photos: [],
     videos: [],
   },
-  {
-    id: "january-2026",
-    date: "January 2026",
-    name: "Placeholder Event Name",
-    photos: [],
-    videos: [],
-  },
-  {
-    id: "march-2026",
-    date: "March 2026",
-    name: "Placeholder Event Name",
-    photos: [],
-    videos: [],
-  },
+  // { //placeholder examples
+  //   id: "january-2026",
+  //   date: "January 2026",
+  //   name: "Placeholder Event Name",
+  //   photos: [],
+  //   videos: [],
+  // },
+  // {
+  //   id: "march-2026",
+  //   date: "March 2026",
+  //   name: "Placeholder Event Name",
+  //   photos: [],
+  //   videos: [],
+  // },
 ];
 
 function FontLoader() {

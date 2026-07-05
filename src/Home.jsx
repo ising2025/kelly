@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import lilbro from "./assets/Lil_Bro_v2_WP2.jpeg";
 
 // ── Google Fonts ──────────────────────────────────────────────────────────────
 const FontLoader = () => (
@@ -955,17 +956,11 @@ export default function HomePage() {
               />
             )
           )}
-          <span
-            style={{
-              fontFamily: "'Rajdhani', sans-serif",
-              fontSize: "0.7rem",
-              letterSpacing: "0.2em",
-              color: "rgba(225,225,225,0.2)",
-              textTransform: "uppercase",
-            }}
-          >
-            [ Bot Image ]
-          </span>
+          <img
+            src={lilbro}
+            alt="Lil Bro"
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          />
         </div>
       </section>
 
