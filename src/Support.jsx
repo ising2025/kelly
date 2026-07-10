@@ -688,6 +688,55 @@ export default function SupportPage() {
         </div>
       </section>
 
+      {/* ── EMAIL BANNER ─────────────────────────────────────────────────── */}
+      <section
+        style={{
+          position: "relative",
+          zIndex: 1,
+          borderTop: "1px solid rgba(255,255,255,0.05)",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+          background: "rgba(233,49,114,0.04)",
+          padding: "4rem 4vw",
+          overflow: "hidden",
+        }}
+      >
+        {/* Top/bottom glow lines */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(233,49,114,0.6), transparent)" }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(233,49,114,0.6), transparent)" }} />
+
+        <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: "1.25rem", textAlign: "center" }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#E93172", margin: 0 }}>
+            Get Involved
+          </p>
+          <h2 style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 700, color: "#E1E1E1", margin: 0, lineHeight: 1.1 }}>
+            Want to donate or become a sponsor?{" "}
+            <span style={{ color: "#E93172" }}>Reach out directly.</span>
+          </h2>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.85rem", lineHeight: 1.8, color: "rgba(225,225,225,0.45)", margin: 0, maxWidth: 420 }}>
+            Donations and sponsor inquiries are handled personally by our team. Send us an email and we'll get back to you within 24 hours.
+          </p>
+          <a
+            href="mailto:havenroboticsgroup@gmail.com"
+            style={{
+              display: "inline-block",
+              background: "#E93172",
+              color: "#fff",
+              fontFamily: "'Rajdhani', sans-serif",
+              fontWeight: 700,
+              fontSize: "0.85rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              padding: "1rem 2.5rem",
+              textDecoration: "none",
+              boxShadow: "0 0 20px rgba(233,49,114,0.35)",
+              marginTop: "0.5rem",
+            }}
+          >
+            ✉ &nbsp;havenroboticsgroup@gmail.com
+          </a>
+        </div>
+      </section>
+
       {/* ── TIERS ────────────────────────────────────────────────────────── */}
       <section
         style={{
@@ -712,145 +761,180 @@ export default function SupportPage() {
           Choose Your Level
         </p>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "1px",
-            background: "rgba(255,255,255,0.04)",
-          }}
-        >
-          {TIERS.map((tier) => (
-            <TierCard
-              key={tier.label}
-              tier={tier}
-              selected={!useCustom && selectedTier?.label === tier.label}
-              onSelect={(t) => {
-                setSelectedTier(t);
-                setUseCustom(false);
-              }}
-            />
-          ))}
-        </div>
+        {/* Tiers grid + custom amount + CTA wrapped for overlay */}
+        <div style={{ position: "relative" }}>
 
-        {/* Custom amount */}
-        <div
-          style={{
-            marginTop: "1px",
-            background: "rgba(255,255,255,0.02)",
-            border: useCustom ? "1px solid #E93172" : "1px solid rgba(255,255,255,0.06)",
-            padding: "1.5rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "1rem",
-            flexWrap: "wrap",
-            transition: "border-color 0.2s",
-          }}
-        >
-          <span
+          <div
             style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "0.65rem",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: useCustom ? "#E93172" : "rgba(225,225,225,0.3)",
-              transition: "color 0.2s",
-              flexShrink: 0,
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "1px",
+              background: "rgba(255,255,255,0.04)",
             }}
           >
-            Custom Amount
-          </span>
-          <div style={{ display: "flex", alignItems: "center", gap: 0, flexGrow: 1 }}>
+            {TIERS.map((tier) => (
+              <TierCard
+                key={tier.label}
+                tier={tier}
+                selected={!useCustom && selectedTier?.label === tier.label}
+                onSelect={(t) => {
+                  setSelectedTier(t);
+                  setUseCustom(false);
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Custom amount */}
+          <div
+            style={{
+              marginTop: "1px",
+              background: "rgba(255,255,255,0.02)",
+              border: useCustom ? "1px solid #E93172" : "1px solid rgba(255,255,255,0.06)",
+              padding: "1.5rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              flexWrap: "wrap",
+              transition: "border-color 0.2s",
+            }}
+          >
             <span
               style={{
-                fontFamily: "'Rajdhani', sans-serif",
-                fontSize: "1.4rem",
-                fontWeight: 700,
-                color: useCustom ? "#E93172" : "rgba(225,225,225,0.2)",
-                padding: "0.4rem 0.6rem",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderRight: "none",
-                lineHeight: 1.5,
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.65rem",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: useCustom ? "#E93172" : "rgba(225,225,225,0.3)",
+                transition: "color 0.2s",
+                flexShrink: 0,
               }}
             >
-              $
+              Custom Amount
             </span>
-            <input
-              type="number"
-              min="1"
-              placeholder="Enter amount"
-              value={customAmount}
-              onChange={(e) => {
-                setCustomAmount(e.target.value);
-                setUseCustom(true);
-              }}
-              onFocus={() => setUseCustom(true)}
-              style={{
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.08)",
-                color: "#E1E1E1",
-                fontFamily: "'Rajdhani', sans-serif",
-                fontSize: "1.4rem",
-                fontWeight: 600,
-                padding: "0.4rem 0.75rem",
-                outline: "none",
-                width: "100%",
-                maxWidth: 200,
-              }}
-            />
+            <div style={{ display: "flex", alignItems: "center", gap: 0, flexGrow: 1 }}>
+              <span
+                style={{
+                  fontFamily: "'Rajdhani', sans-serif",
+                  fontSize: "1.4rem",
+                  fontWeight: 700,
+                  color: useCustom ? "#E93172" : "rgba(225,225,225,0.2)",
+                  padding: "0.4rem 0.6rem",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRight: "none",
+                  lineHeight: 1.5,
+                }}
+              >
+                $
+              </span>
+              <input
+                type="number"
+                min="1"
+                placeholder="Enter amount"
+                value={customAmount}
+                onChange={(e) => {
+                  setCustomAmount(e.target.value);
+                  setUseCustom(true);
+                }}
+                onFocus={() => setUseCustom(true)}
+                style={{
+                  background: "transparent",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  color: "#E1E1E1",
+                  fontFamily: "'Rajdhani', sans-serif",
+                  fontSize: "1.4rem",
+                  fontWeight: 600,
+                  padding: "0.4rem 0.75rem",
+                  outline: "none",
+                  width: "100%",
+                  maxWidth: 200,
+                }}
+              />
+            </div>
           </div>
-        </div>
 
-        {/* CTA */}
-        <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <button
-            onClick={handleDonate}
-            style={{
-              fontFamily: "'Rajdhani', sans-serif",
-              fontWeight: 700,
-              fontSize: "0.9rem",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              padding: "1rem 3rem",
-              border: "none",
-              background: finalAmount > 0 ? "#E93172" : "rgba(233,49,114,0.3)",
-              color: "#fff",
-              cursor: finalAmount > 0 ? "pointer" : "default",
-              transition: "background 0.2s, box-shadow 0.2s",
-              boxShadow: finalAmount > 0 ? "0 0 20px rgba(233,49,114,0.35)" : "none",
-            }}
-            onMouseEnter={(e) => { if (finalAmount > 0) e.target.style.background = "#B61A66"; }}
-            onMouseLeave={(e) => { if (finalAmount > 0) e.target.style.background = "#E93172"; }}
-          >
-            {finalAmount > 0 ? `Back with $${finalAmount}` : "Select a tier"}
-          </button>
+          {/* CTA */}
+          <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+            <button
+              onClick={handleDonate}
+              style={{
+                fontFamily: "'Rajdhani', sans-serif",
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                padding: "1rem 3rem",
+                border: "none",
+                background: finalAmount > 0 ? "#E93172" : "rgba(233,49,114,0.3)",
+                color: "#fff",
+                cursor: finalAmount > 0 ? "pointer" : "default",
+                transition: "background 0.2s, box-shadow 0.2s",
+                boxShadow: finalAmount > 0 ? "0 0 20px rgba(233,49,114,0.35)" : "none",
+              }}
+              onMouseEnter={(e) => { if (finalAmount > 0) e.target.style.background = "#B61A66"; }}
+              onMouseLeave={(e) => { if (finalAmount > 0) e.target.style.background = "#E93172"; }}
+            >
+              {finalAmount > 0 ? `Back with $${finalAmount}` : "Select a tier"}
+            </button>
 
-          <span
+            <span
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.7rem",
+                color: "rgba(225,225,225,0.25)",
+                letterSpacing: "0.05em",
+              }}
+            >
+              Contact us for a donation!
+            </span>
+          </div>
+
+          {/* Fine print */}
+          <p
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: "0.7rem",
-              color: "rgba(225,225,225,0.25)",
-              letterSpacing: "0.05em",
+              color: "rgba(225,225,225,0.2)",
+              marginTop: "1rem",
+              lineHeight: 1.6,
             }}
           >
-            Contact us for a donation!
-          </span>
-        </div>
+            Donations support our team directly. This is not a
+            tax-deductible charitable contribution. Perks are fulfilled by the
+            team post-season.
+          </p>
 
-        {/* Fine print */}
-        <p
-          style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: "0.7rem",
-            color: "rgba(225,225,225,0.2)",
-            marginTop: "1rem",
-            lineHeight: 1.6,
-          }}
-        >
-          Donations support our team directly. This is not a
-          tax-deductible charitable contribution. Perks are fulfilled by the
-          team post-season.
-        </p>
+          {/* ── COMING SOON OVERLAY ── */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.75rem",
+              background: "rgba(15,17,8,0.75)",
+              backdropFilter: "blur(3px)",
+              WebkitBackdropFilter: "blur(3px)",
+              border: "1px solid rgba(233,49,114,0.2)",
+              zIndex: 10,
+            }}
+          >
+            <div style={{ width: 32, height: 1, background: "#E93172" }} />
+            <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#E93172" }}>
+              Coming Soon
+            </span>
+            <p style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "clamp(1.3rem, 3vw, 1.8rem)", fontWeight: 700, color: "#E1E1E1", margin: 0, letterSpacing: "0.06em", textAlign: "center", lineHeight: 1.1 }}>
+              Online donation tiers launching soon
+            </p>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", color: "rgba(225,225,225,0.4)", textAlign: "center", margin: 0, maxWidth: 300, lineHeight: 1.6 }}>
+              Email us above in the meantime
+            </p>
+            <div style={{ width: 32, height: 1, background: "#E93172" }} />
+          </div>
+
+        </div>
       </section>
 
       {/* ── WHERE IT GOES ─────────────────────────────────────────────────── */}
@@ -1054,10 +1138,6 @@ export default function SupportPage() {
         </p>
 
         {[
-          {
-            q: "Is my donation secure?",
-            a: "Yes. We use Stripe for all payment processing — your card details never touch our servers.",
-          },
           {
             q: "When do I receive my perks?",
             a: "Perks are fulfilled after the season ends, typically within 60 days. You'll get an email from us.",
