@@ -9,13 +9,15 @@ import willPhoto from './assets/will.jpeg';
 import seanPhoto from './assets/sean.jpeg';
 import sebastianPhoto from './assets/sebastian.JPEG';
 import nickPhoto from './assets/nick.jpeg';
+import henriPhoto from './assets/henri.jpeg';
+import kingstenPhoto from './assets/Kingsten.jpeg';
 
 const teamMembers = [
-  { name: "Henri", photo: null, bio: "I’m an alum of VEX Team 3723 and I’m looking forward to seeing what WWSD has in store for us! I’m a mechE major and an aviation enthusiast, also involved in Yale Jet Aeronautics." },
+  { name: "Henri", photo: henriPhoto, bio: "I’m an alum of VEX Team 3723 and I’m looking forward to seeing what WWSD has in store for us! I’m a mechE major and an aviation enthusiast, also involved in Yale Jet Aeronautics." },
   { name: "Ishani", photo: ishaniPhoto, bio: "I’m a CS + linguistics major, and I loved being a part of robotics when I was younger. Super excited for what WWSD has in store!" },
   { name: "Sebastian", photo: sebastianPhoto, photoPosition: "center 20%", bio: "I’m a MechE major, and I’ve been excited about robotics ever since my time on FRC Team 9038. I spent high school telling people FRC wasn’t BattleBots, but then I started watching NHRL in 2024, and now here we are!" },
   { name: "Kelly", photo: kellyPhoto, photoPosition: "center 35%", bio: "I’m an alum of FRC Team 3504 GoS, excited to be on WWSD! I’m interested in pure math + CS + robotics and a big fan of tomato and egg noodles." },
-  { name: "Kingsten", photo: null, bio: "I’m an applied math major who watched way too much BattleBots. I also captained FTC Team 10237 previously." },
+  { name: "Kingsten", photo: kingstenPhoto, bio: "I’m an applied math major who watched way too much BattleBots. I also captained FTC Team 10237 previously." },
   { name: "Nick", photo: nickPhoto, bio: "I’m an EE major who is interested in aerospace and robotics! Previously I led FRC Team 7407 and I’m involved in rocketry (my hobby) and FSAE." },
   { name: "Sean", photo: seanPhoto, bio: "I’m a CS major new to robotics. I have interests in AI, and I’m excited to see how WWSD brings them together!" },
   { name: "Will", photo: willPhoto, bio: "I’m a MechE major interested in aerospace! I have experience in mid-powered rocketry and am currently project lead for Yale Jet Aeronautics. I am also a volunteer firefighter!" },

@@ -87,7 +87,7 @@ export default function Contact() {
           </span>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <a
-              href="https://instagram.com/OUR_HANDLE"
+              href="https://www.instagram.com/team.wwsd"
               target="_blank"
               rel="noopener noreferrer"
               style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "1px solid rgba(225,225,225,0.3)", borderRadius: 0, color: "#E1E1E1", textDecoration: "none", display: "inline-block" }}
@@ -95,7 +95,7 @@ export default function Contact() {
               Instagram
             </a>
             <a
-              href="https://youtube.com/@OUR_HANDLE"
+              href="https://www.youtube.com/@TeamWWSD"
               target="_blank"
               rel="noopener noreferrer"
               style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "1px solid rgba(225,225,225,0.3)", borderRadius: 0, color: "#E1E1E1", textDecoration: "none", display: "inline-block" }}

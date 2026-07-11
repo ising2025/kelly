@@ -610,7 +610,7 @@ export default function HomePage() {
     { label: "Bot Weight",      value: 3,   unit: " lbs" },
     { label: "Top Speed",       value: 4.77,  unit: " m/s" },
     { label: "Weapon RPM",      value: 24464,  unit: "" },
-    { label: "Arena Victories", value: 0,    unit: "" },
+    //{ label: "Arena Victories", value: 0,    unit: "" },
     { label: "Kinetic Energy",       value: 977,  unit: " J" },
   ];
 
@@ -907,7 +907,8 @@ export default function HomePage() {
               marginBottom: "1rem",
             }}
           >
-             Lil Bro is a beater bot engineered blah blah blah.
+             Lil Bro is our first combat robot in the 3lb beetleweight class. 
+             It's a four-wheel-drive vertical spinner crafted from carbon fiber, AR500 steel, and titanium.
           </p>
           <p
             style={{
@@ -917,7 +918,7 @@ export default function HomePage() {
               marginBottom: "2rem",
             }}
           >
-            more stuff blah blah.
+            
           </p>
           <ArenaButton primary onClick={() => navigate("/about#our-robot")}>Bot Diagram</ArenaButton>
         </div>
