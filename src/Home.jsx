@@ -2,13 +2,6 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import lilbro from "./assets/Lil_Bro_v2_WP2.jpeg";
 
-// ── Google Fonts ──────────────────────────────────────────────────────────────
-const FontLoader = () => (
-  <style>{`
-    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-  `}</style>
-);
-
 // ── Spark Canvas ──────────────────────────────────────────────────────────────
 function SparkCanvas() {
   const canvasRef = useRef(null);
@@ -294,7 +287,7 @@ function StatTicker({ label, value, unit = "" }) {
     <div style={{ textAlign: "center" }}>
       <div
         style={{
-          fontFamily: "'Rajdhani', sans-serif",
+          fontFamily: "'Space Grotesk', sans-serif",
           fontSize: "clamp(1.6rem, 3.5vw, 2.6rem)",
           fontWeight: 700,
           color: "#E93172",
@@ -348,7 +341,7 @@ function ArenaButton({ children, primary = false, onClick }) {
         onMouseLeave={() => setHovered(false)}
         onClick={onClick}
         style={{
-          fontFamily: "'Rajdhani', sans-serif",
+          fontFamily: "'Space Grotesk', sans-serif",
           fontWeight: 600,
           fontSize: "0.85rem",
           letterSpacing: "0.2em",
@@ -624,7 +617,6 @@ export default function HomePage() {
         color: "#E1E1E1",
       }}
     >
-      <FontLoader />
       <Scanlines />
       <SparkCanvas />
 
@@ -715,8 +707,8 @@ export default function HomePage() {
             <div style={{ width: 40, height: 1, background: "#E93172" }} />
             <span
               style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.7rem",
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: "0.85rem",
                 letterSpacing: "0.28em",
                 textTransform: "uppercase",
                 color: "#E1E1E1",
@@ -732,7 +724,7 @@ export default function HomePage() {
             text="Lil Bro"
             as="h1"
             style={{
-              fontFamily: "'Rajdhani', sans-serif",
+              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(3.5rem, 12vw, 9rem)",
               fontWeight: 700,
               letterSpacing: "0.06em",
@@ -891,7 +883,7 @@ export default function HomePage() {
             text="Precision forged. Arena proven."
             as="h2"
             style={{
-              fontFamily: "'Rajdhani', sans-serif",
+              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
               color: "#E1E1E1",
@@ -1025,7 +1017,7 @@ export default function HomePage() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'Rajdhani', sans-serif",
+                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "1.25rem",
                     fontWeight: 600,
                     color: "#E1E1E1",
@@ -1036,7 +1028,7 @@ export default function HomePage() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'Rajdhani', sans-serif",
+                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "0.85rem",
                     letterSpacing: "0.1em",
                     color: fight.result === "WIN" ? "#E93172" : "rgba(225,225,225,0.4)",
@@ -1085,7 +1077,7 @@ export default function HomePage() {
           text="ENTER THE ARENA"
           as="h2"
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "clamp(2.5rem, 8vw, 6rem)",
             fontWeight: 700,
             color: "#E1E1E1",
@@ -1126,7 +1118,7 @@ export default function HomePage() {
       >
         <span
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "1rem",
             fontWeight: 700,
             letterSpacing: "0.15em",
