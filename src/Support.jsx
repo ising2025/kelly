@@ -1,12 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-// ── Fonts ─────────────────────────────────────────────────────────────────────
-const FontLoader = () => (
-  <style>{`
-    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-  `}</style>
-);
-
 // ── Scanlines ─────────────────────────────────────────────────────────────────
 function Scanlines() {
   return (
@@ -195,7 +188,7 @@ function ChargeMeter({ percent, goal, raised }) {
         <div>
           <span
             style={{
-              fontFamily: "'Rajdhani', sans-serif",
+              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "1.6rem",
               fontWeight: 700,
               color: "#E93172",
@@ -218,7 +211,7 @@ function ChargeMeter({ percent, goal, raised }) {
         </div>
         <span
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "1.6rem",
             fontWeight: 700,
             color: "rgba(225,225,225,0.2)",
@@ -345,7 +338,7 @@ function TierCard({ tier, selected, onSelect }) {
         </div>
         <div
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "2.2rem",
             fontWeight: 700,
             color: "#E1E1E1",
@@ -411,10 +404,10 @@ function BreakdownBar({ label, pct, detail }) {
   return (
     <div ref={ref} style={{ marginBottom: "1.5rem" }}>
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
-        <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1rem", fontWeight: 600, color: "#E1E1E1", letterSpacing: "0.06em" }}>
+        <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1rem", fontWeight: 600, color: "#E1E1E1", letterSpacing: "0.06em" }}>
           {label}
         </span>
-        <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1rem", fontWeight: 700, color: "#E93172" }}>
+        <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1rem", fontWeight: 700, color: "#E93172" }}>
           {pct}%
         </span>
       </div>
@@ -453,7 +446,7 @@ function Toast({ message, visible }) {
           transform: "translateX(-50%)",
           background: "#E93172",
           color: "#fff",
-          fontFamily: "'Rajdhani', sans-serif",
+          fontFamily: "'Space Grotesk', sans-serif",
           fontWeight: 600,
           fontSize: "0.85rem",
           letterSpacing: "0.15em",
@@ -557,7 +550,6 @@ export default function SupportPage() {
         overflowX: "hidden",
       }}
     >
-      <FontLoader />
       <Scanlines />
 
       {/* Ambient glow */}
@@ -594,7 +586,7 @@ export default function SupportPage() {
           }}
         >
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
-          <span style={{ fontSize: "0.65rem", letterSpacing: "0.28em", textTransform: "uppercase" }}>
+          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.8rem", letterSpacing: "0.28em", textTransform: "uppercase" }}>
             WWSD
           </span>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
@@ -602,7 +594,7 @@ export default function SupportPage() {
 
         <h1
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "clamp(2.8rem, 9vw, 6rem)",
             fontWeight: 700,
             letterSpacing: "0.06em",
@@ -661,7 +653,7 @@ export default function SupportPage() {
             <div key={s.label} style={{ textAlign: "center" }}>
               <div
                 style={{
-                  fontFamily: "'Rajdhani', sans-serif",
+                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1.8rem",
                   fontWeight: 700,
                   color: "#E93172",
@@ -708,7 +700,7 @@ export default function SupportPage() {
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#E93172", margin: 0 }}>
             Get Involved
           </p>
-          <h2 style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 700, color: "#E1E1E1", margin: 0, lineHeight: 1.1 }}>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 700, color: "#E1E1E1", margin: 0, lineHeight: 1.1 }}>
             Want to donate or become a sponsor?{" "}
             <span style={{ color: "#E93172" }}>Reach out directly.</span>
           </h2>
@@ -721,7 +713,7 @@ export default function SupportPage() {
               display: "inline-block",
               background: "#E93172",
               color: "#fff",
-              fontFamily: "'Rajdhani', sans-serif",
+              fontFamily: "'Space Grotesk', sans-serif",
               fontWeight: 700,
               fontSize: "0.85rem",
               letterSpacing: "0.18em",
@@ -815,7 +807,7 @@ export default function SupportPage() {
             <div style={{ display: "flex", alignItems: "center", gap: 0, flexGrow: 1 }}>
               <span
                 style={{
-                  fontFamily: "'Rajdhani', sans-serif",
+                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1.4rem",
                   fontWeight: 700,
                   color: useCustom ? "#E93172" : "rgba(225,225,225,0.2)",
@@ -841,7 +833,7 @@ export default function SupportPage() {
                   background: "transparent",
                   border: "1px solid rgba(255,255,255,0.08)",
                   color: "#E1E1E1",
-                  fontFamily: "'Rajdhani', sans-serif",
+                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1.4rem",
                   fontWeight: 600,
                   padding: "0.4rem 0.75rem",
@@ -858,7 +850,7 @@ export default function SupportPage() {
             <button
               onClick={handleDonate}
               style={{
-                fontFamily: "'Rajdhani', sans-serif",
+                fontFamily: "'Space Grotesk', sans-serif",
                 fontWeight: 700,
                 fontSize: "0.9rem",
                 letterSpacing: "0.2em",
@@ -925,7 +917,7 @@ export default function SupportPage() {
             <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#E93172" }}>
               Coming Soon
             </span>
-            <p style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "clamp(1.3rem, 3vw, 1.8rem)", fontWeight: 700, color: "#E1E1E1", margin: 0, letterSpacing: "0.06em", textAlign: "center", lineHeight: 1.1 }}>
+            <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.3rem, 3vw, 1.8rem)", fontWeight: 700, color: "#E1E1E1", margin: 0, letterSpacing: "0.06em", textAlign: "center", lineHeight: 1.1 }}>
               Online donation tiers launching soon
             </p>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", color: "rgba(225,225,225,0.4)", textAlign: "center", margin: 0, maxWidth: 300, lineHeight: 1.6 }}>
@@ -971,7 +963,7 @@ export default function SupportPage() {
             </p>
             <h2
               style={{
-                fontFamily: "'Rajdhani', sans-serif",
+                fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "clamp(1.5rem, 3vw, 2.2rem)",
                 fontWeight: 700,
                 color: "#E1E1E1",
@@ -1068,7 +1060,7 @@ export default function SupportPage() {
                 <span style={{ fontSize: "1.5rem" }}>{card.icon}</span>
                 <div
                   style={{
-                    fontFamily: "'Rajdhani', sans-serif",
+                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "1.1rem",
                     fontWeight: 600,
                     color: "#E1E1E1",
@@ -1173,7 +1165,7 @@ export default function SupportPage() {
           zIndex: 1,
         }}
       >
-        <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1rem", fontWeight: 700, letterSpacing: "0.15em", color: "#E93172" }}>
+        <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1rem", fontWeight: 700, letterSpacing: "0.15em", color: "#E93172" }}>
           Lil Bro
         </span>
         <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.2)", textTransform: "uppercase" }}>
@@ -1215,7 +1207,7 @@ function FAQItem({ q, a }) {
       >
         <span
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "1rem",
             fontWeight: 600,
             color: "#E1E1E1",

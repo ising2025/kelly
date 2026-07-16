@@ -20,7 +20,7 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <header className="fixed top-0 z-50 w-full">
+    <header className="fixed top-0 z-50 w-full" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
 
       {/* Background */}
       <div className="absolute inset-0 bg-black/40 backdrop-blur-xl" />
@@ -36,7 +36,7 @@ export default function Navbar() {
             <span className="text-[10px] tracking-[0.6em] text-[#E93172]">
               TEAM
             </span>
-            <span className="text-3xl font-black tracking-[0.2em] text-white transition duration-300 group-hover:text-[#E93172]">
+            <span className="text-3xl font-black tracking-[-0.01em] text-white transition duration-300 group-hover:text-[#E93172]">
               WWSD
             </span>
           </div>
@@ -52,7 +52,7 @@ export default function Navbar() {
                 key={item.name}
                 to={item.path}
                 onClick={() => setMenuOpen(false)}
-                className={`group relative py-2 text-sm uppercase tracking-[0.3em] transition duration-300 ${
+                className={`group relative py-2 text-base uppercase tracking-[0em] transition duration-300 ${
                   isActive ? "text-white" : "text-white/50 hover:text-white"
                 }`}
               >
@@ -135,7 +135,7 @@ export default function Navbar() {
                   opacity: menuOpen ? 1 : 0,
                   transition: "transform 0.4s ease, opacity 0.4s ease",
                 }}
-                className={`relative px-8 py-5 text-2xl uppercase tracking-[0.3em] font-black transition-colors duration-300 ${
+                className={`relative px-8 py-5 text-2xl uppercase tracking-[-0.01em] font-black transition-colors duration-300 ${
                   isActive ? "text-white" : "text-white/40 hover:text-white"
                 }`}
               >
@@ -161,7 +161,7 @@ export default function Navbar() {
             className="mt-8 flex flex-col items-center gap-3"
           >
             <div className="h-px w-12 bg-[#E93172]/40" />
-            <span className="text-[10px] tracking-[0.4em] text-white/20 uppercase">
+            <span className="text-[10px] tracking-[0em] text-white/20 uppercase">
               WWSD
             </span>
           </div>

@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function FontLoader() {
-  return (
-    <style>{`
-      @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-    `}</style>
-  );
-}
-
 function Scanlines() {
   return (
     <div style={{
@@ -47,14 +39,13 @@ function GlitchText({ text, as: Tag = "h1", style = {} }) {
 export default function Contact() {
   return (
     <div style={{ background: "#0F1108", minHeight: "100vh", overflowX: "hidden", fontFamily: "'Inter', sans-serif", color: "#E1E1E1" }}>
-      <FontLoader />
       <Scanlines />
 
       {/* ── PAGE HEADER ─────────────────────────────────────────────────── */}
       <section style={{ padding: "7rem 4vw 4rem", textAlign: "center" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem", marginBottom: "1.5rem", opacity: 0.6 }}>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
-          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#E1E1E1" }}>
+          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#E1E1E1" }}>
             WWSD
           </span>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
@@ -63,7 +54,7 @@ export default function Contact() {
           text="Contact Us"
           as="h1"
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "clamp(2.5rem, 8vw, 5rem)",
             fontWeight: 700,
             letterSpacing: "0.06em",
@@ -90,7 +81,7 @@ export default function Contact() {
               href="https://www.instagram.com/team.wwsd"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "1px solid rgba(225,225,225,0.3)", borderRadius: 0, color: "#E1E1E1", textDecoration: "none", display: "inline-block" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "1px solid rgba(225,225,225,0.3)", borderRadius: 0, color: "#E1E1E1", textDecoration: "none", display: "inline-block" }}
             >
               Instagram
             </a>
@@ -98,7 +89,7 @@ export default function Contact() {
               href="https://www.youtube.com/@TeamWWSD"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "1px solid rgba(225,225,225,0.3)", borderRadius: 0, color: "#E1E1E1", textDecoration: "none", display: "inline-block" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "1px solid rgba(225,225,225,0.3)", borderRadius: 0, color: "#E1E1E1", textDecoration: "none", display: "inline-block" }}
             >
               YouTube
             </a>
@@ -115,7 +106,7 @@ export default function Contact() {
           </p>
           <a
             href="mailto:havenroboticsgroup@gmail.com"
-            style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1rem", fontWeight: 600, letterSpacing: "0.1em", color: "#E93172", textDecoration: "none", textTransform: "uppercase" }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1rem", fontWeight: 600, letterSpacing: "0.1em", color: "#E93172", textDecoration: "none", textTransform: "uppercase" }}
           >
             havenroboticsgroup@gmail.com →
           </a>
@@ -131,7 +122,7 @@ export default function Contact() {
           </p>
           <Link
             to="/support"
-            style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "none", borderRadius: 0, cursor: "pointer", background: "#E93172", color: "#fff", textDecoration: "none", display: "inline-block" }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", padding: "0.85rem 2.4rem", border: "none", borderRadius: 0, cursor: "pointer", background: "#E93172", color: "#fff", textDecoration: "none", display: "inline-block" }}
           >
             Visit our Support page
           </Link>
@@ -152,7 +143,7 @@ export default function Contact() {
       >
         <span
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "1rem",
             fontWeight: 700,
             letterSpacing: "0.15em",

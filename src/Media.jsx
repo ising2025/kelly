@@ -26,14 +26,6 @@ const competitions = [
   // },
 ];
 
-function FontLoader() {
-  return (
-    <style>{`
-      @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-    `}</style>
-  );
-}
-
 function Scanlines() {
   return (
     <div style={{
@@ -82,14 +74,13 @@ export default function Media() {
 
   return (
     <div style={{ background: "#0F1108", minHeight: "100vh", overflowX: "hidden", fontFamily: "'Inter', sans-serif", color: "#E1E1E1" }}>
-      <FontLoader />
       <Scanlines />
 
       {/* ── PAGE HEADER ─────────────────────────────────────────────────── */}
       <section style={{ padding: "7rem 4vw 4rem", textAlign: "center" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem", marginBottom: "1.5rem", opacity: 0.6 }}>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
-          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#E1E1E1" }}>
+          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#E1E1E1" }}>
             WWSD
           </span>
           <div style={{ width: 40, height: 1, background: "#E93172" }} />
@@ -98,7 +89,7 @@ export default function Media() {
           text="Combat Log"
           as="h1"
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "clamp(2.5rem, 8vw, 5rem)",
             fontWeight: 700,
             letterSpacing: "0.06em",
@@ -129,7 +120,7 @@ export default function Media() {
                 text={comp.name}
                 as="h2"
                 style={{
-                  fontFamily: "'Rajdhani', sans-serif",
+                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "clamp(1.5rem, 3vw, 2.2rem)",
                   fontWeight: 700,
                   color: "#E1E1E1",
@@ -158,7 +149,7 @@ export default function Media() {
                   padding: "3rem 2rem",
                   textAlign: "center",
                   color: "rgba(225,225,225,0.2)",
-                  fontFamily: "'Rajdhani', sans-serif",
+                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "0.8rem",
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
@@ -187,7 +178,7 @@ export default function Media() {
                   padding: "3rem 2rem",
                   textAlign: "center",
                   color: "rgba(225,225,225,0.2)",
-                  fontFamily: "'Rajdhani', sans-serif",
+                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "0.8rem",
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
@@ -213,7 +204,7 @@ export default function Media() {
       >
         <span
           style={{
-            fontFamily: "'Rajdhani', sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "1rem",
             fontWeight: 700,
             letterSpacing: "0.15em",
