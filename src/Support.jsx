@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import onshapePhoto from './assets/onshape-logo-RGB_color.png';
 
 // ── Scanlines ─────────────────────────────────────────────────────────────────
 function Scanlines() {
@@ -647,7 +648,6 @@ export default function SupportPage() {
         >
           {[
             { val: "0", label: "Backers" },
-            { val: "31", label: "Days Left" },
             { val: "0", label: "Arena Wins" },
           ].map((s) => (
             <div key={s.label} style={{ textAlign: "center" }}>
@@ -677,6 +677,44 @@ export default function SupportPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── SPONSORS ─────────────────────────────────────────────────────── */}
+      <section
+        style={{
+          position: "relative",
+          zIndex: 1,
+          borderTop: "1px solid rgba(255,255,255,0.05)",
+          padding: "4rem 4vw",
+        }}
+      >
+        <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: "2.5rem" }}>
+          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#E1E1E1", margin: 0, textAlign: "center", lineHeight: 1.1 }}>
+            Thank You to Our{" "}
+            <span style={{ color: "#E93172" }}>Sponsors</span>
+          </p>
+
+          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
+            <div
+              style={{
+                padding: "1.5rem 2.5rem",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "0.75rem",
+                minWidth: 180,
+              }}
+            >
+              
+              <img src= { onshapePhoto }
+              alt="Onshape" 
+              style={{ height: 80, objectFit: "contain"}} />
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
+                Onshape
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
