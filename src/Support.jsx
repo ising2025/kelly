@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import onshapePhoto from './assets/onshape-logo-RGB_color.png';
+import onshapePhoto from './assets/onshape-logo-RGB_KO_gr.svg';
 
 // ── Scanlines ─────────────────────────────────────────────────────────────────
 function Scanlines() {
