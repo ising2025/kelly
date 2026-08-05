@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import onshapePhoto from './assets/onshape-logo-RGB_KO_gr.svg';
+import sendCutPhoto from './assets/sendcutsend-logo-white.svg';
 
 // ── Scanlines ─────────────────────────────────────────────────────────────────
 function Scanlines() {
@@ -695,7 +696,7 @@ export default function SupportPage() {
             <span style={{ color: "#E93172" }}>Sponsors</span>
           </p>
 
-          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
+          <div style={{ display: "flex", flexDirection: "row", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
             <div
               style={{
                 padding: "1.5rem 2.5rem",
@@ -706,12 +707,29 @@ export default function SupportPage() {
                 minWidth: 180,
               }}
             >
-              
-              <img src= { onshapePhoto }
-              alt="Onshape" 
-              style={{ height: 80, objectFit: "contain"}} />
+              <div style={{ height: 80, display: "flex", alignItems: "center" }}>
+                <img src={onshapePhoto} alt="Onshape" style={{ height: 80, objectFit: "contain" }} />
+              </div>
               <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
                 Onshape
+              </span>
+            </div>
+
+            <div
+              style={{
+                padding: "1.5rem 2.5rem",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "0.75rem",
+                minWidth: 180,
+              }}
+            >
+              <div style={{ height: 80, display: "flex", alignItems: "center" }}>
+                <img src={sendCutPhoto} alt="SendCutSend" style={{ height: 50, objectFit: "contain" }} />
+              </div>
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
+                SendCutSend
               </span>
             </div>
           </div>
