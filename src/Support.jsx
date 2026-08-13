@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import onshapePhoto from './assets/onshape-logo-RGB_KO_gr.svg';
 import sendCutPhoto from './assets/sendcutsend-logo-white.svg';
+import repeatRoboticsPhoto from './assets/repeatRobotics.webp';
 
 // ── Scanlines ─────────────────────────────────────────────────────────────────
 function Scanlines() {
@@ -697,7 +698,10 @@ export default function SupportPage() {
           </p>
 
           <div style={{ display: "flex", flexDirection: "row", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
-            <div
+            <a
+              href="https://www.onshape.com"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 padding: "1.5rem 2.5rem",
                 display: "flex",
@@ -705,6 +709,8 @@ export default function SupportPage() {
                 alignItems: "center",
                 gap: "0.75rem",
                 minWidth: 180,
+                textDecoration: "none",
+                color: "inherit",
               }}
             >
               <div style={{ height: 80, display: "flex", alignItems: "center" }}>
@@ -713,9 +719,12 @@ export default function SupportPage() {
               <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
                 Onshape
               </span>
-            </div>
+            </a>
 
-            <div
+            <a
+              href="https://www.sendcutsend.com"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 padding: "1.5rem 2.5rem",
                 display: "flex",
@@ -723,6 +732,8 @@ export default function SupportPage() {
                 alignItems: "center",
                 gap: "0.75rem",
                 minWidth: 180,
+                textDecoration: "none",
+                color: "inherit",
               }}
             >
               <div style={{ height: 80, display: "flex", alignItems: "center" }}>
@@ -731,7 +742,30 @@ export default function SupportPage() {
               <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
                 SendCutSend
               </span>
-            </div>
+            </a>
+
+            <a
+              href="https://www.repeat-robotics.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: "1.5rem 2.5rem",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "0.75rem",
+                minWidth: 180,
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              <div style={{ height: 80, display: "flex", alignItems: "center" }}>
+                <img src={repeatRoboticsPhoto} alt="RepeatRobotics" style={{ height: 60, objectFit: "contain" }} />
+              </div>
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
+                RepeatRobotics
+              </span>
+            </a>
           </div>
         </div>
       </section>
