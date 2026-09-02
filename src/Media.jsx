@@ -6,7 +6,7 @@ const competitions = [
   {
     id: "october-2026",
     date: "October 2026",
-    name: "October 2026 NHRL Open",
+    name: "October 2026 NHRL XP",
     photos: [],
     videos: [],
   },

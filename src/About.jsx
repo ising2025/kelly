@@ -11,6 +11,7 @@ import sebastianPhoto from './assets/sebastian.JPEG';
 import nickPhoto from './assets/nick.jpeg';
 import henriPhoto from './assets/henri.jpeg';
 import kingstenPhoto from './assets/Kingsten.jpeg';
+import caeliPhoto from './assets/caeli.webp';
 
 const teamMembers = [
   { name: "Henri", photo: henriPhoto, bio: "I’m an alum of VEX Team 3723 and I’m looking forward to seeing what WWSD has in store for us! I’m a mechE major and an aviation enthusiast, also involved in Yale Jet Aeronautics." },
@@ -21,7 +22,7 @@ const teamMembers = [
   { name: "Nick", photo: nickPhoto, bio: "I’m an EE major who is interested in aerospace and robotics! Previously I led FRC Team 7407 and I’m involved in rocketry (my hobby) and FSAE." },
   { name: "Sean", photo: seanPhoto, bio: "I’m a CS major new to robotics. I have interests in AI, and I’m excited to see how WWSD brings them together!" },
   { name: "Will", photo: willPhoto, bio: "I’m a MechE major interested in aerospace! I have experience in mid-powered rocketry and am currently project lead for Yale Jet Aeronautics. I am also a volunteer firefighter!" },
-  { name: "Caeli", photo: null, bio: "" },
+  { name: "Caeli", photo: caeliPhoto, bio: "I’m a mechanical engineering major with an interest in robotics and astrophysics! In highschool I was coach and captain of FRC team 236 (go techno-ticks!). On campus I’m involved in FSAE and still volunteer for FIRST events when I can." },
 ];
 
 const competitions = [
