@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import onshapePhoto from './assets/onshape-logo-RGB_KO_gr.svg';
 import sendCutPhoto from './assets/sendcutsend-logo-white.svg';
 import repeatRoboticsPhoto from './assets/repeatRobotics.webp';
+import onlineMetalsPhoto from './assets/online_metals.png';
 
 // ── Scanlines ─────────────────────────────────────────────────────────────────
 function Scanlines() {
@@ -502,6 +503,14 @@ const BREAKDOWN = [
   { label: "Travel & Logistics", pct: 10, detail: "Getting the bot and team to the arena and back." },
 ];
 
+// logoHeight evens out the different amounts of padding baked into each logo file
+const SPONSORS = [
+  { name: "Onshape",        href: "https://www.onshape.com",          logo: onshapePhoto,        logoHeight: 80 },
+  { name: "SendCutSend",    href: "https://www.sendcutsend.com",      logo: sendCutPhoto,        logoHeight: 50 },
+  { name: "RepeatRobotics", href: "https://www.repeat-robotics.com",  logo: repeatRoboticsPhoto, logoHeight: 60 },
+  { name: "OnlineMetals",   href: "https://www.onlinemetals.com/",    logo: onlineMetalsPhoto,   logoHeight: 100 },
+];
+
 const CAMPAIGN_GOAL = 5000;
 const CAMPAIGN_RAISED = 0;
 
@@ -697,75 +706,32 @@ export default function SupportPage() {
             <span style={{ color: "#E93172" }}>Sponsors</span>
           </p>
 
-          <div style={{ display: "flex", flexDirection: "row", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
-            <a
-              href="https://www.onshape.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                padding: "1.5rem 2.5rem",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "0.75rem",
-                minWidth: 180,
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
-              <div style={{ height: 80, display: "flex", alignItems: "center" }}>
-                <img src={onshapePhoto} alt="Onshape" style={{ height: 80, objectFit: "contain" }} />
-              </div>
-              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
-                Onshape
-              </span>
-            </a>
-
-            <a
-              href="https://www.sendcutsend.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                padding: "1.5rem 2.5rem",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "0.75rem",
-                minWidth: 180,
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
-              <div style={{ height: 80, display: "flex", alignItems: "center" }}>
-                <img src={sendCutPhoto} alt="SendCutSend" style={{ height: 50, objectFit: "contain" }} />
-              </div>
-              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
-                SendCutSend
-              </span>
-            </a>
-
-            <a
-              href="https://www.repeat-robotics.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                padding: "1.5rem 2.5rem",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "0.75rem",
-                minWidth: 180,
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
-              <div style={{ height: 80, display: "flex", alignItems: "center" }}>
-                <img src={repeatRoboticsPhoto} alt="RepeatRobotics" style={{ height: 60, objectFit: "contain" }} />
-              </div>
-              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
-                RepeatRobotics
-              </span>
-            </a>
+          <div style={{ width: "100%", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(max(200px, calc((100% - 2rem) / 2)), 1fr))", gap: "2rem" }}>
+            {SPONSORS.map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: "1.5rem 1rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "0.75rem",
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
+                {/* Fixed-size logo box so every label lines up */}
+                <div style={{ height: 100, width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img src={s.logo} alt={s.name} style={{ height: s.logoHeight, maxWidth: "100%", objectFit: "contain" }} />
+                </div>
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(225,225,225,0.3)", textTransform: "uppercase" }}>
+                  {s.name}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
