@@ -2,6 +2,92 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import lilbro from "./assets/Lil_Bro_v2_WP2.jpeg";
 
+// Keep tournaments newest first. Add each tournament's matches here.
+const fightTournaments = [
+  {
+    name: "October 2026 NHRL XP",
+    roundReached: "Semifinal",
+    matches: [
+      { match: "Semifinal", opponent: "Split Decision", result: "LOSS", method: "KO" },
+      { match: "Quarterfinal", opponent: "HiveMind", result: "WIN", method: "JD" },
+      { match: "Qualifying R3", opponent: "Flashpoint", result: "WIN", method: "FF" },
+      { match: "Qualifying R2", opponent: "YEETUS", result: "LOSS", method: "KO" },
+      { match: "Qualifying R1", opponent: "Fracture", result: "WIN", method: "Tap Out" },
+    ],
+  },
+];
+
+function FightRecord() {
+  const [activeTournament, setActiveTournament] = useState(0);
+  const [activeMatch, setActiveMatch] = useState(0);
+  const tournament = fightTournaments[activeTournament];
+  const tournamentWins = tournament.matches.filter((fight) => fight.result === "WIN").length;
+  const tournamentLosses = tournament.matches.filter((fight) => fight.result === "LOSS").length;
+  const changeTournament = (index) => {
+    setActiveTournament(index);
+    setActiveMatch(0);
+  };
+  const matches = fightTournaments.flatMap((tournament) => tournament.matches);
+  const wins = matches.filter((fight) => fight.result === "WIN").length;
+  const losses = matches.filter((fight) => fight.result === "LOSS").length;
+
+  return (
+    <div className="fight-record">
+      <div className="fight-overall">
+        <span className="fight-eyebrow">Overall fight record</span>
+        <strong>{wins} <span>–</span> {losses}</strong>
+      </div>
+      <div role="region" aria-roledescription="carousel" aria-label="Tournament history">
+        <div className="fight-navigation">
+          <span className="fight-eyebrow">Event history</span>
+
+        </div>
+        <h3 className="fight-tournament-name" aria-live="polite">{tournament.name}</h3>
+        <div className="fight-tournament-stats">
+          <div><span className="fight-muted">Tournament record</span><strong>{tournamentWins} – {tournamentLosses}</strong></div>
+          <div><span className="fight-muted">Round reached</span><strong>{tournament.roundReached ?? "TBD"}</strong></div>
+        </div>
+        <div className="fight-tournament-layout">
+        <div className="fight-viewport">
+          <div className="fight-track">
+            {fightTournaments.map((tournament, index) => (
+              <article className="fight-card" key={tournament.name} style={{ transform: `translateY(${(index - activeTournament) * 100}%)` }} aria-roledescription="slide" aria-label={`${index + 1} of ${fightTournaments.length}: ${tournament.name}`} aria-hidden={index !== activeTournament}>
+                <div className="fight-match-viewport">
+                  <div className="fight-match-track" style={{ transform: `translateX(-${activeMatch * 100}%)` }}>
+                {tournament.matches.map((fight, matchIndex) => (
+                  <div className="fight-match" key={fight.match} aria-hidden={index !== activeTournament || matchIndex !== activeMatch}>
+                    <span className="fight-eyebrow">{fight.match}</span>
+                    <h4>vs. {fight.opponent}</h4>
+                    <div className="fight-details">
+                      <div><span className="fight-muted">Result</span><strong>{fight.result ?? "TBD"}</strong></div>
+                      <div><span className="fight-muted">Method</span><strong>{fight.method}</strong></div>
+                    </div>
+                  </div>
+                ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+          <div className="fight-controls fight-tournament-controls" aria-label="Tournament navigation">
+            <button type="button" aria-label="Previous tournament" disabled={activeTournament === 0} onClick={() => changeTournament(activeTournament - 1)}>↑</button>
+            <span>{activeTournament + 1} / {fightTournaments.length}</span>
+            <button type="button" aria-label="Next tournament" disabled={activeTournament === fightTournaments.length - 1} onClick={() => changeTournament(activeTournament + 1)}>↓</button>
+          </div>
+        </div>
+        {tournament.matches.length > 1 && (
+          <div className="fight-controls fight-match-controls">
+            <button type="button" aria-label="Previous match" disabled={activeMatch === 0} onClick={() => setActiveMatch((index) => index - 1)}>←</button>
+            <span aria-live="polite">Match {activeMatch + 1} / {tournament.matches.length}</span>
+            <button type="button" aria-label="Next match" disabled={activeMatch === tournament.matches.length - 1} onClick={() => setActiveMatch((index) => index + 1)}>→</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Spark Canvas ──────────────────────────────────────────────────────────────
 function SparkCanvas() {
   const canvasRef = useRef(null);
@@ -961,85 +1047,12 @@ export default function HomePage() {
       <section
         style={{
           borderTop: "1px solid rgba(255,255,255,0.06)",
-          padding: "6rem 4vw",
+          padding: "3.5rem 4vw",
           background: "rgba(233,49,114,0.03)",
         }}
       >
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <span
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "0.65rem",
-              letterSpacing: "0.25em",
-              textTransform: "uppercase",
-              color: "#E93172",
-              display: "block",
-              marginBottom: "3rem",
-              textAlign: "center",
-            }}
-          >
-            Fight Record
-          </span>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "1px",
-              background: "rgba(255,255,255,0.06)",
-            }}
-          >
-            {[
-              { match: "OCT 2026 — Match 1", opponent: "TBD", result: "WIN", method: "TBD" },
-              // { match: "Season 8 — Ep. 7", opponent: "Voltage Drop", result: "WIN", method: "JD" },
-              // { match: "Season 8 — Quarterfinal", opponent: "Apex", result: "LOSS", method: "KO — 2:12" },
-              // { match: "Season 9 — Ep. 2", opponent: "Gridlock", result: "WIN", method: "KO — 1:03" },
-            ].map((fight, i) => (
-              <div
-                key={i}
-                style={{
-                  background: "#0F1108",
-                  padding: "2rem 1.75rem",
-                  borderLeft: fight.result === "WIN" ? "2px solid #E93172" : "2px solid rgba(225,225,225,0.15)",
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.18em",
-                    color: "rgba(225,225,225,0.35)",
-                    textTransform: "uppercase",
-                    marginBottom: "0.6rem",
-                  }}
-                >
-                  {fight.match}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: "1.25rem",
-                    fontWeight: 600,
-                    color: "#E1E1E1",
-                    marginBottom: "0.3rem",
-                  }}
-                >
-                  vs. {fight.opponent}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: "0.85rem",
-                    letterSpacing: "0.1em",
-                    color: fight.result === "WIN" ? "#E93172" : "rgba(225,225,225,0.4)",
-                    fontWeight: 700,
-                  }}
-                >
-                  {fight.result} — {fight.method}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div style={{ maxWidth: 780, margin: "0 auto" }}>
+          <FightRecord />
         </div>
       </section>
 

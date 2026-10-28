@@ -29,7 +29,7 @@ const competitions = [
   {
     date: "October 2026",
     name: "October 2026 NHRL XP",
-    blurb: "Lil Bro's Debut Event",
+    blurb: "Lil Bro's Debut Event - SF Finish",
     mediaAnchor: "october-2026",
   },
   // { //placeholder examples
