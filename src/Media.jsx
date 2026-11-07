@@ -308,7 +308,7 @@ export default function Media() {
       </section>
 
       {/* ── COMPETITION SECTIONS ─────────────────────────────────────────── */}
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 4vw 8rem" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 4vw 0rem" }}>
         {competitions.map((comp, i) => (
           <section
             key={comp.id}
