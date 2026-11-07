@@ -8,11 +8,11 @@ const fightTournaments = [
     name: "October 2026 NHRL XP",
     roundReached: "Semifinal",
     matches: [
-      { match: "Semifinal", opponent: "Split Decision", result: "LOSS", method: "KO" },
-      { match: "Quarterfinal", opponent: "HiveMind", result: "WIN", method: "JD" },
+      { match: "Semifinal", opponent: "Split Decision", result: "LOSS", method: "KO", video: "https://brettzone.nhrl.io/brettZone/v2/f/W-5?tournamentID=nhrl_oct26_3lbxp" },
+      { match: "Quarterfinal", opponent: "HiveMind", result: "WIN", method: "JD", video: "https://brettzone.nhrl.io/brettZone/v2/f/W-2?tournamentID=nhrl_oct26_3lbxp" },
       { match: "Qualifying R3", opponent: "Flashpoint", result: "WIN", method: "FF" },
-      { match: "Qualifying R2", opponent: "YEETUS", result: "LOSS", method: "KO" },
-      { match: "Qualifying R1", opponent: "Fracture", result: "WIN", method: "Tap Out" },
+      { match: "Qualifying R2", opponent: "YEETUS", result: "LOSS", method: "KO", video: "https://brettzone.nhrl.io/brettZone/v2/f/EX-e2175dede65a4103?tournamentID=nhrl_oct26_3lbxp" },
+      { match: "Qualifying R1", opponent: "Fracture", result: "WIN", method: "Tap Out", video: "https://brettzone.nhrl.io/brettZone/v2/f/EX-5c56ba5c12be4dae?tournamentID=nhrl_oct26_3lbxp" },
     ],
   },
 ];
@@ -57,10 +57,15 @@ function FightRecord() {
                 {tournament.matches.map((fight, matchIndex) => (
                   <div className="fight-match" key={fight.match} aria-hidden={index !== activeTournament || matchIndex !== activeMatch}>
                     <span className="fight-eyebrow">{fight.match}</span>
-                    <h4>vs. {fight.opponent}</h4>
+                    <h4>Lil Bro vs. {fight.opponent}</h4>
                     <div className="fight-details">
                       <div><span className="fight-muted">Result</span><strong>{fight.result ?? "TBD"}</strong></div>
                       <div><span className="fight-muted">Method</span><strong>{fight.method}</strong></div>
+                      {fight.video && (
+                        <a className="fight-watch" href={fight.video} target="_blank" rel="noopener noreferrer" tabIndex={index === activeTournament && matchIndex === activeMatch ? undefined : -1}>
+                          Watch the fight →
+                        </a>
+                      )}
                     </div>
                   </div>
                 ))}

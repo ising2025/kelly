@@ -1,5 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import oct2026Bot from "./assets/Oct2026/IMG_6568.jpg";
+import oct2026BotSide from "./assets/Oct2026/IMG_6572.jpg";
+import oct2026PitsA from "./assets/Oct2026/IMG_6560.jpg";
+import oct2026PitsB from "./assets/Oct2026/IMG_6562.jpg";
+import oct2026Weapon from "./assets/Oct2026/IMG_6575.jpg";
+import oct2026Arena from "./assets/Oct2026/IMG_6595.jpg";
+
+// Videos are linked straight from NHRL's BrettZone storage, not hosted here.
+const NHRL = "https://nhrl-matches.us-east-1.linodeobjects.com/proxy";
 
 // competitions must stay in sync with About.jsx — mediaAnchor here = id on each section
 const competitions = [
@@ -7,8 +16,67 @@ const competitions = [
     id: "october-2026",
     date: "October 2026",
     name: "October 2026 NHRL XP",
-    photos: [],
-    videos: [],
+    // ratio = width / height, so each photo keeps its shape in the collage.
+    photos: [
+      { src: oct2026Bot, alt: "Lil Bro on the pit table, front view", ratio: 1600 / 1173 },
+      { src: oct2026PitsA, alt: "Team member working on Lil Bro in the pits", ratio: 3 / 4 },
+      { src: oct2026BotSide, alt: "Lil Bro on the pit table, angled view", ratio: 3 / 4 },
+      { src: oct2026PitsB, alt: "Team member repairing Lil Bro in the pits", ratio: 3 / 4 },
+      { src: oct2026Weapon, alt: "Close-up of Lil Bro's weapon", ratio: 1562 / 1600 },
+      { src: oct2026Arena, alt: "Lil Bro in the NHRL arena", ratio: 3 / 4 },
+    ],
+    // Each video is one slide; options are the tabs (hero shots or camera angles).
+    videos: [
+      {
+        title: "Hero Shots",
+        link: "https://brettzone.nhrl.io/brettZone/v2/heros/lilbro",
+        loop: true,
+        options: [
+          { label: "Bot", src: `${NHRL}/clips/clip-2026-10-03_17-39-12.754-c3973353_720p.mp4` },
+          // trimEnd: seconds cut off the end (the file is NHRL's, so it's trimmed during playback).
+          { label: "Builder", src: `${NHRL}/clips/clip-2026-10-03_17-37-33.181-d26c9c2d_720p.mp4`, trimEnd: 2 },
+        ],
+      },
+      {
+        title: "Lil Bro vs. Fracture",
+        description: "Qualifying R1 · Win by Tap Out",
+        link: "https://brettzone.nhrl.io/brettZone/v2/f/EX-5c56ba5c12be4dae?tournamentID=nhrl_oct26_3lbxp",
+        options: [
+          { label: "Overhead", src: `${NHRL}/Cage-5-Overhead-High-2026-10-03_17-44-43.103_720p.mp4` },
+          { label: "Red", src: `${NHRL}/Cage-5-Red-High-2026-10-03_17-44-42.251_720p.mp4` },
+          { label: "Blue", src: `${NHRL}/Cage-5-Blue-High-2026-10-03_17-44-42.760_720p.mp4` },
+        ],
+      },
+      {
+        title: "Lil Bro vs. YEETUS",
+        description: "Qualifying R2 · Loss by KO",
+        link: "https://brettzone.nhrl.io/brettZone/v2/f/EX-e2175dede65a4103?tournamentID=nhrl_oct26_3lbxp",
+        options: [
+          { label: "Overhead", src: `${NHRL}/Cage-5-Overhead-High-2026-10-03_18-21-49.306_720p.mp4` },
+          { label: "Red", src: `${NHRL}/Cage-5-Red-High-2026-10-03_18-21-50.468_720p.mp4` },
+        ],
+      },
+      {
+        title: "Lil Bro vs. HiveMind",
+        description: "Quarterfinal · Win by Judges' Decision",
+        link: "https://brettzone.nhrl.io/brettZone/v2/f/W-2?tournamentID=nhrl_oct26_3lbxp",
+        options: [
+          { label: "Overhead", src: `${NHRL}/Cage-5-Overhead-High-2026-10-03_21-43-23.526_720p.mp4` },
+          { label: "Red", src: `${NHRL}/Cage-5-Red-High-2026-10-03_21-43-23.528_720p.mp4` },
+          { label: "Blue", src: `${NHRL}/Cage-5-Blue-High-2026-10-03_21-43-23.525_720p.mp4` },
+        ],
+      },
+      {
+        title: "Lil Bro vs. Split Decision",
+        description: "Semifinal · Loss by KO",
+        link: "https://brettzone.nhrl.io/brettZone/v2/f/W-5?tournamentID=nhrl_oct26_3lbxp",
+        options: [
+          { label: "Overhead", src: `${NHRL}/Cage-6-Overhead-High-2026-10-03_22-10-45.377_720p.mp4` },
+          { label: "Red", src: `${NHRL}/Cage-6-Red-2026-10-03_22-10-45.150_720p.mp4` },
+          { label: "Blue", src: `${NHRL}/Cage-6-Blue-2026-10-03_22-10-46.259_720p.mp4` },
+        ],
+      },
+    ],
   },
   // { //placeholder examples
   //   id: "january-2026",
@@ -61,6 +129,142 @@ function GlitchText({ text, as: Tag = "h1", style = {} }) {
   );
 }
 
+// Splits photos into rows; each photo's width follows its ratio so a row shares one height.
+function PhotoCollage({ photos }) {
+  const query = "(max-width: 640px)";
+  const [narrow, setNarrow] = useState(() => window.matchMedia(query).matches);
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    const onChange = () => setNarrow(media.matches);
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const perRow = narrow ? 2 : 3;
+  const rows = [];
+  for (let i = 0; i < photos.length; i += perRow) rows.push(photos.slice(i, i + perRow));
+
+  return (
+    <>
+      <div className="media-collage">
+        {rows.map((row, i) => (
+          <div className="media-collage-row" key={i}>
+            {row.map((photo, j) => (
+              <button key={photo.src} type="button" className="media-collage-item" style={{ flexGrow: photo.ratio, aspectRatio: photo.ratio }} aria-label={`Enlarge: ${photo.alt}`} onClick={() => setOpenIndex(i * perRow + j)}>
+                <img src={photo.src} alt={photo.alt} loading="lazy" />
+              </button>
+            ))}
+          </div>
+        ))}
+      </div>
+      {openIndex !== null && <PhotoLightbox photos={photos} index={openIndex} onChange={setOpenIndex} onClose={() => setOpenIndex(null)} />}
+    </>
+  );
+}
+
+function PhotoLightbox({ photos, index, onChange, onClose }) {
+  const closeRef = useRef(null);
+  const photo = photos[index];
+  const prev = (index - 1 + photos.length) % photos.length;
+  const next = (index + 1) % photos.length;
+
+  useEffect(() => {
+    const opener = document.activeElement;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    return () => {
+      document.body.style.overflow = overflow;
+      opener?.focus();
+    };
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowLeft") onChange(prev);
+      else if (e.key === "ArrowRight") onChange(next);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [prev, next, onChange, onClose]);
+
+  return (
+    <div className="media-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <button ref={closeRef} type="button" className="media-lightbox-close" aria-label="Close" onClick={onClose}>✕</button>
+      <button type="button" className="media-lightbox-arrow prev" aria-label="Previous photo" onClick={() => onChange(prev)}>←</button>
+      <figure onClick={(e) => e.target === e.currentTarget && onClose()}>
+        <img src={photo.src} alt={photo.alt} />
+        <figcaption>{index + 1} / {photos.length}</figcaption>
+      </figure>
+      <button type="button" className="media-lightbox-arrow next" aria-label="Next photo" onClick={() => onChange(next)}>→</button>
+    </div>
+  );
+}
+
+function VideoCarousel({ videos }) {
+  const [activeVideo, setActiveVideo] = useState(0);
+  const [activeOption, setActiveOption] = useState(0);
+  const video = videos[activeVideo];
+  const option = video.options[activeOption];
+  const changeVideo = (index) => {
+    setActiveVideo(index);
+    setActiveOption(0);
+  };
+
+  return (
+    <div className="media-player" role="region" aria-roledescription="carousel" aria-label="Videos">
+      <div className="media-player-frame">
+        <video
+          key={option.src}
+          src={option.src}
+          controls
+          playsInline
+          preload="metadata"
+          loop={video.loop}
+          muted={video.loop}
+          autoPlay={video.loop}
+          onTimeUpdate={option.trimEnd ? (e) => {
+            const v = e.currentTarget;
+            if (!v.duration || v.currentTime < v.duration - option.trimEnd) return;
+            if (video.loop) v.currentTime = 0;
+            else v.pause();
+          } : undefined}
+        />
+      </div>
+      {video.options.length > 1 && (
+        <div className="media-tabs" role="tablist" aria-label={video.loop ? "Shot" : "Camera angle"}>
+          {video.options.map((opt, index) => (
+            <button key={opt.label} type="button" role="tab" aria-selected={index === activeOption} onClick={() => setActiveOption(index)}>
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      )}
+      <div className="media-player-info">
+        <div>
+          <h3 aria-live="polite">{video.title}</h3>
+          {video.description && <p>{video.description}</p>}
+        </div>
+        {video.link && (
+          <a className="fight-watch" href={video.link} target="_blank" rel="noopener noreferrer">
+            View on BrettZone →
+          </a>
+        )}
+      </div>
+      {videos.length > 1 && (
+        <div className="fight-controls fight-match-controls">
+          <button type="button" aria-label="Previous video" onClick={() => changeVideo((activeVideo - 1 + videos.length) % videos.length)}>←</button>
+          <span>Video {activeVideo + 1} / {videos.length}</span>
+          <button type="button" aria-label="Next video" onClick={() => changeVideo((activeVideo + 1) % videos.length)}>→</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Media() {
   const { hash } = useLocation();
 
@@ -104,7 +308,7 @@ export default function Media() {
       </section>
 
       {/* ── COMPETITION SECTIONS ─────────────────────────────────────────── */}
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 4vw 8rem" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 4vw 0rem" }}>
         {competitions.map((comp, i) => (
           <section
             key={comp.id}
@@ -136,13 +340,7 @@ export default function Media() {
                 Photos
               </span>
               {comp.photos.length > 0 ? (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)" }}>
-                  {comp.photos.map((src, j) => (
-                    <div key={j} style={{ aspectRatio: "4/3", overflow: "hidden" }}>
-                      <img src={src} alt={`${comp.name} photo ${j + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                    </div>
-                  ))}
-                </div>
+                <PhotoCollage photos={comp.photos} />
               ) : (
                 <div style={{
                   border: "1px dashed rgba(233,49,114,0.2)",
@@ -165,13 +363,7 @@ export default function Media() {
                 Videos
               </span>
               {comp.videos.length > 0 ? (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "1rem" }}>
-                  {comp.videos.map((src, j) => (
-                    <div key={j} style={{ aspectRatio: "16/9", border: "1px solid rgba(233,49,114,0.2)", overflow: "hidden" }}>
-                      <iframe src={src} title={`${comp.name} video ${j + 1}`} allowFullScreen style={{ width: "100%", height: "100%", border: "none" }} />
-                    </div>
-                  ))}
-                </div>
+                <VideoCarousel videos={comp.videos} />
               ) : (
                 <div style={{
                   border: "1px dashed rgba(233,49,114,0.2)",
